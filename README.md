@@ -15,7 +15,8 @@ Escreva um ou dois parágrafo resumindo o objetivo do seu projeto.
 * Ilo Amy Saldanha Rivero
 * João Carlos Oliveira Caetano
 * Luciana Mara Freitas
-* 
+* Rommel Vieira Carneiro 
+
 
 ## Instruções de utilização
 
