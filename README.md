@@ -7,8 +7,8 @@ Escreva um ou dois parágrafo resumindo o objetivo do seu projeto.
 
 * Nome completo do aluno 1
 * Nome completo do aluno 2
-* Nome completo do aluno 3
 * Luiz Felipe Alves da Silva
+* Nome completo do aluno 4
 
 ## Professores responsáveis
 
