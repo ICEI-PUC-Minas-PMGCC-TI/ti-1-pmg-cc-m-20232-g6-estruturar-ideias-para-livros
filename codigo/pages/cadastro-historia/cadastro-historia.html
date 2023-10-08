@@ -12,6 +12,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="local-css.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
@@ -20,14 +21,89 @@
 <body class="bg-light text-dark">
     <!--Cabeçalho da página-->
     <div class="container-fluid">
-        <div
-            class="shadow border-bottom border-secondary border-2 bg-primary bg-gradient h-100 py-2 row align-items-center">
+        <div class="shadow border-bottom border-secondary border-2 bg-primary bg-gradient h-100 row align-items-center">
             <div class="navbar navbar-expand-lg">
                 <div class="container-fluid">
-                    <img src="../../assets/images/logo-dark.png" height="50" class="text-dark m-1 rounded">
+                    <img src="../../assets/images/logo-dark.png" height="30" class="text-dark rounded">
                 </div>
             </div>
         </div>
+
+        <!--Text box
+    <div class="container bg-light border border-black">
+        <div class="row row-cols-auto justify-content-md-center fixed-height container">
+            <div class="col-2">
+                <img src="https://source.unsplash.com/random/200x200?sig=1" class="img-thumbnail rounded rounded2 my-1"
+                    alt="...">
+            </div>
+            <div class="col-3 border align-items-center">
+                <label for="inputNome" class="form-label fs-5">Nome</label>
+                <div class="input-group input-group-lg">
+                    <input type="text" class="form-control" id="inputNome" aria-describedby="nomeAjuda">
+                </div>
+                <br>
+                <label for="inputGenero" class="form-label fs-6">Gênero <nobr class="opacity-50 fs-6">(Ex.: Ação,
+                        Aventura, Romance)</nobr></label>
+                <div class="input-group input-group-sm">
+                    <input type="text" class="form-control" id="inputGenero" aria-describedby="generoAjuda">
+                </div>
+            </div>
+            <div class="col col-6 border">
+                <label for="inputSinopse" class="form-label fs-5">Sinopse <nobr class="opacity-50 fs-6">(Faça uma
+                        sinopse da sua história)</nobr></label>
+                <input type="text" class="form-control h-75" id="inputSinopse" aria-describedby="sinopseAjuda">
+            </div>
+        </div>
+        <div class="row justify-content-md-center fixed-height mx-5">
+            <div class="col col-12 border">
+                <label for="inputSinopse" class="form-label fs-5">Sinopse <nobr class="opacity-50 fs-6">(Faça
+                        uma sinopse da sua história)</nobr></label>
+                <input type="text" class="form-control h-75" id="inputSinopse" aria-describedby="sinopseAjuda">
+            </div>
+        </div>
+
+    </div>
+    -->
+
+        <div class="container text-center rounded rounded-3 bg-light bg-gradient my-5 py-2 shadow">
+            <h1 class="bg-secondary bg-gradient rounded rounded-3 p-1">Cadastro de História</h1>
+            <div class="row border-top">
+                <div class="col-md-auto">
+                    <img src="https://source.unsplash.com/random/200x200?sig=1" class="img-thumbnail my-2" alt="...">
+                </div>
+                <div class="col py-2 d-flex flex-column">
+                    <!--NOME-->
+                    <label for="inputNome" class="form-label fs-5">Nome</label>
+                    <div class="input-group input-group-lg flex-grow-1">
+                        <input type="text" class="form-control" id="inputNome" aria-describedby="nomeAjuda">
+                    </div>
+                    <br>
+                    <!--GENERO-->
+                    <label for="inputGenero" class="form-label fs-5">Gênero <nobr class="opacity-50 fs-6">(Ex.: Ação,
+                            Aventura, Romance)</nobr></label>
+                    <div class="input-group input-group-sm flex-grow-1">
+                        <input type="text" class="form-control" id="inputGenero" aria-describedby="generoAjuda">
+                    </div>
+                </div>
+                <div class="col py-2 d-flex flex-column">
+                    <!--SINOPSE-->
+                    <label for="inputSinopse" class="form-label fs-5">Sinopse</label>
+                    <div class="row flex-grow-1">
+                        <div class="col">
+                            <textarea type="text" class="form-control h-100" id="inputSinopse" aria-describedby="sinopseAjuda"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row border-top pt-2">
+                <div class="col">
+                    <button type="button" class="btn btn-success bg-gradient btn-block">Salvar</button>
+                    <button type="button" class="btn btn-danger bg-gradient btn-block">Cancelar</button>
+                </div>
+            </div>
+        </div>
+
+
 </body>
 
 </html>
