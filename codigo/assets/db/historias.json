@@ -1,0 +1,173 @@
+{
+    "historias": [
+      {
+        "id": 1,
+        "nome": "Avaloria",
+        "genero": "aventura",
+        "sinopse": "Há muito tempo atrás, no reino de Avaloria...",
+        "eventos": [
+          {
+            "id": 1,
+            "nome": "Morte do Rei",
+            "data_inicio": "10/05/300",
+            "data_fim": "",
+            "descricao": "A morte do rei após a primeira guerra",
+            "conexoes": {
+              "eventos": [],
+              "locais": [1],
+              "personagens": []
+            }
+          },
+          {
+            "id": 2,
+            "nome": "A Batalha Épica",
+            "data_inicio": "15/07/305",
+            "data_fim": "",
+            "descricao": "Uma batalha lendária que abalou o reino",
+            "conexoes": {
+              "eventos": [],
+              "locais": [1],
+              "personagens": []
+            }
+          }
+        ],
+        "locais": [
+          {
+            "id": 1,
+            "nome": "Reino de Avaloria",
+            "arquitetura": "Casas grandes, quadradas, telhados afiados, casas coloridas",
+            "geografia": "Montanhoso",
+            "historia": "Um reino com uma história prolongada",
+            "conexoes": {
+              "eventos": [1, 2],
+              "locais": [2],
+              "personagens": [1]
+            }
+          },
+          {
+            "id": 2,
+            "nome": "Cidade de Eldoria",
+            "arquitetura": "Torres altas, ruas movimentadas, mercado agitado",
+            "geografia": "Costeira",
+            "historia": "Uma cidade comercial próspera",
+            "conexoes": {
+              "eventos": [],
+              "locais": [1],
+              "personagens": [2]
+            }
+          }
+        ],
+        "personagens": [
+          {
+            "id": 1,
+            "nome": "Cayn",
+            "raca": "Humano",
+            "nascimento": "15/04/320",
+            "papel": "Protagonista",
+            "conexoes": {
+              "eventos": [1, 2],
+              "locais": [1],
+              "personagens": []
+            }
+          },
+          {
+            "id": 2,
+            "nome": "Elena",
+            "raca": "Elfa",
+            "nascimento": "20/02/312",
+            "papel": "Aliada",
+            "conexoes": {
+              "eventos": [2],
+              "locais": [2],
+              "personagens": []
+            }
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "nome": "Terra das Sombras",
+        "genero": "ação",
+        "sinopse": "Em um canto obscuro do reino de Avaloria...",
+        "eventos": [
+          {
+            "id": 1,
+            "nome": "Invasão dos Demônios",
+            "data_inicio": "03/11/310",
+            "data_fim": "08/12/314",
+            "descricao": "Os demônios invadem a Terra das Sombras",
+            "conexoes": {
+              "eventos": [],
+              "locais": [],
+              "personagens": []
+            }
+          },
+          {
+            "id": 2,
+            "nome": "O Líder dos Rebeldes",
+            "data_inicio": "20/01/315",
+            "data_fim": "13/02/319",
+            "descricao": "O líder dos rebeldes se levanta contra os demônios",
+            "conexoes": {
+              "eventos": [],
+              "locais": [],
+              "personagens": []
+            }
+          }
+        ],
+        "locais": [
+          {
+            "id": 1,
+            "nome": "Terra das Sombras",
+            "arquitetura": "Ruínas sombrias, cavernas escuras, torres negras",
+            "geografia": "Sombrio, Plano, Desolado",
+            "historia": "Uma terra assombrada por forças sombrias",
+            "conexoes": {
+              "eventos": [1, 2],
+              "locais": [],
+              "personagens": []
+            }
+          },
+          {
+            "id": 2,
+            "nome": "Acampamento dos Rebeldes",
+            "arquitetura": "Barracas improvisadas, tochas acesas, muralhas de madeira",
+            "geografia": "Floresta",
+            "historia": "O último refúgio da resistência contra os demônios",
+            "conexoes": {
+              "eventos": [2],
+              "locais": [],
+              "personagens": []
+            }
+          }
+        ],
+        "personagens": [
+          {
+            "id": 1,
+            "nome": "Kael",
+            "raca": "Humano",
+            "nascimento": "10/06/293",
+            "papel": "Herói da Resistência",
+            "conexoes": {
+              "eventos": [1, 2],
+              "locais": [1, 2],
+              "personagens": [1]
+            }
+          },
+          {
+            "id": 2,
+            "nome": "Friera",
+            "raca": "Elfa Negra",
+            "nascimento": "25/03/205",
+            "papel": "Feiticeira das Sombras",
+            "conexoes": {
+              "eventos": [1],
+              "locais": [1],
+              "personagens": [2]
+            }
+          }
+        ]
+      }
+    ]
+  }
+  
