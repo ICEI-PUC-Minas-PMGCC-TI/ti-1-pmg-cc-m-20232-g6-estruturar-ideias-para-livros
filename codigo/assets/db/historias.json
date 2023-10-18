@@ -3,12 +3,14 @@
       {
         "id": 1,
         "nome": "Avaloria",
+        "imagem": "https://w0.peakpx.com/wallpaper/47/289/HD-wallpaper-fantasy-forest-fantasy-dark-magic-beautiful-enchanted-night-forest-spring.jpg",
         "genero": "aventura",
         "sinopse": "Há muito tempo atrás, no reino de Avaloria...",
         "eventos": [
           {
             "id": 1,
             "nome": "Morte do Rei",
+            "imagem": "https://source.unsplash.com/random/200x200?sig=1",
             "data_inicio": "10/05/300",
             "data_fim": "",
             "descricao": "A morte do rei após a primeira guerra",
@@ -21,6 +23,7 @@
           {
             "id": 2,
             "nome": "A Batalha Épica",
+            "imagem": "https://source.unsplash.com/random/200x200?sig=1",
             "data_inicio": "15/07/305",
             "data_fim": "",
             "descricao": "Uma batalha lendária que abalou o reino",
@@ -35,6 +38,7 @@
           {
             "id": 1,
             "nome": "Reino de Avaloria",
+            "imagem": "https://source.unsplash.com/random/200x200?sig=1",
             "arquitetura": "Casas grandes, quadradas, telhados afiados, casas coloridas",
             "geografia": "Montanhoso",
             "historia": "Um reino com uma história prolongada",
@@ -47,6 +51,7 @@
           {
             "id": 2,
             "nome": "Cidade de Eldoria",
+            "imagem": "https://source.unsplash.com/random/200x200?sig=1",
             "arquitetura": "Torres altas, ruas movimentadas, mercado agitado",
             "geografia": "Costeira",
             "historia": "Uma cidade comercial próspera",
@@ -61,6 +66,7 @@
           {
             "id": 1,
             "nome": "Cayn",
+            "imagem": "https://source.unsplash.com/random/200x200?sig=1",
             "raca": "Humano",
             "nascimento": "15/04/320",
             "papel": "Protagonista",
@@ -73,6 +79,7 @@
           {
             "id": 2,
             "nome": "Elena",
+            "imagem": "https://source.unsplash.com/random/200x200?sig=1",
             "raca": "Elfa",
             "nascimento": "20/02/312",
             "papel": "Aliada",
@@ -87,12 +94,14 @@
       {
         "id": 2,
         "nome": "Terra das Sombras",
+        "imagem": "https://i.redd.it/s73p1xv7j8x81.jpg",
         "genero": "ação",
         "sinopse": "Em um canto obscuro do reino de Avaloria...",
         "eventos": [
           {
             "id": 1,
             "nome": "Invasão dos Demônios",
+            "imagem": "https://source.unsplash.com/random/200x200?sig=1",
             "data_inicio": "03/11/310",
             "data_fim": "08/12/314",
             "descricao": "Os demônios invadem a Terra das Sombras",
@@ -105,6 +114,7 @@
           {
             "id": 2,
             "nome": "O Líder dos Rebeldes",
+            "imagem": "https://source.unsplash.com/random/200x200?sig=1",
             "data_inicio": "20/01/315",
             "data_fim": "13/02/319",
             "descricao": "O líder dos rebeldes se levanta contra os demônios",
@@ -119,6 +129,7 @@
           {
             "id": 1,
             "nome": "Terra das Sombras",
+            "imagem": "https://source.unsplash.com/random/200x200?sig=1",
             "arquitetura": "Ruínas sombrias, cavernas escuras, torres negras",
             "geografia": "Sombrio, Plano, Desolado",
             "historia": "Uma terra assombrada por forças sombrias",
@@ -131,6 +142,7 @@
           {
             "id": 2,
             "nome": "Acampamento dos Rebeldes",
+            "imagem": "https://source.unsplash.com/random/200x200?sig=1",
             "arquitetura": "Barracas improvisadas, tochas acesas, muralhas de madeira",
             "geografia": "Floresta",
             "historia": "O último refúgio da resistência contra os demônios",
@@ -145,6 +157,7 @@
           {
             "id": 1,
             "nome": "Kael",
+            "imagem": "https://source.unsplash.com/random/200x200?sig=1",
             "raca": "Humano",
             "nascimento": "10/06/293",
             "papel": "Herói da Resistência",
@@ -157,6 +170,7 @@
           {
             "id": 2,
             "nome": "Friera",
+            "imagem": "https://source.unsplash.com/random/200x200?sig=1",
             "raca": "Elfa Negra",
             "nascimento": "25/03/205",
             "papel": "Feiticeira das Sombras",
