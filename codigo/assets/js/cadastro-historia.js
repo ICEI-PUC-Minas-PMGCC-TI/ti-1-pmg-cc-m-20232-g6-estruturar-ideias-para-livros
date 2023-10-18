@@ -4,7 +4,21 @@ function carregarHistoria(carregar_id) {
     fetch("../../assets/db/historias.json")
     .then(response => response.json())
     .then(data => {
-        let historiaCarregada = data.historias[carregar_id];
+        // Carrega uma historia se o ID dela for o correto
+        let historiaCarregada = null;
+        for (const historia of data.historias) {
+            if (historia.id == carregar_id) {
+                historiaCarregada = historia;
+                break;
+            }
+        }
+
+        // Cancela o carregamento se nao tiver encontrado nenhuma historia
+        if (historiaCarregada == null) {
+            return;
+        }
+
+        // Carrega a página
         alterarImagem("imagemHistoria", historiaCarregada.imagem);
 
         alterarInput("inputNome", historiaCarregada.nome);
