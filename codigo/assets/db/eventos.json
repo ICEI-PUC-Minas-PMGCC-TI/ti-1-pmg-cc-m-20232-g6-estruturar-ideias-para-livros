@@ -1,0 +1,180 @@
+{
+    "eventos": [
+      {
+        "nome": "Guerra dos Reinos",
+        "data_inicio": "17/01/2022",
+        "data_fim": "20/03/2023",
+        "descricao": "Uma guerra brutal eclodiu entre os reinos vizinhos de Eldoria e Valoria, desencadeada por disputas territoriais e recursos valiosos. Os personagens se veem no meio desse conflito épico, podendo escolher lados, buscar a paz ou até mesmo buscar uma maneira de deter a guerra. Suas escolhas terão um impacto significativo no mundo.",
+        "imagem": "https://source.unsplash.com/random/200x200?sig=1",
+        "eventos": [],
+        "locais": [],
+        "personagens": [],
+        "id": 1
+      },
+      {
+        "nome": "Viagem a terra proibida",
+        "data_inicio": "10/05/0215",
+        "data_fim": "08/07/0215",
+        "descricao": "Uma expedição ousada é organizada para explorar a Terra Proibida, uma terra misteriosa e perigosa além das fronteiras conhecidas. Os personagens são convocados para participar da expedição, enfrentando monstros, enigmas e magia antiga enquanto buscam descobrir segredos há muito esquecidos e talvez até encontrar um artefato lendário.",
+        "imagem": "https://source.unsplash.com/random/200x200?sig=1",
+        "eventos": [],
+        "locais": [],
+        "personagens": [],
+        "id": 2
+      },
+      {
+        "nome": "Exploração em busca de tesouros",
+        "data_inicio": "01/06/0215",
+        "data_fim": "08/07/0215",
+        "descricao": "Uma jornada em busca de tesouros é organizada para explorar a Terra Proibida, uma terra misteriosa e perigosa além das fronteiras conhecidas. Os personagens são convocados para participar da expedição, enfrentando monstros, enigmas e magia antiga enquanto buscam descobrir segredos há muito esquecidos e talvez até encontrar um artefato lendário.",
+        "imagem": "https://source.unsplash.com/random/200x200?sig=1",
+        "eventos": [],
+        "locais": [],
+        "personagens": [],
+        "id": 3
+      },
+      {
+        "nome": "Roubo da joia de Luminaris",
+        "data_inicio": "04/08/1992",
+        "data_fim": "04/08/1992",
+        "descricao": "A valiosa Jóia de Luminaris, um artefato mágico que mantém o equilíbrio na cidade de Thaloria, foi roubada por um grupo de ladrões habilidosos. Os personagens do RPG são encarregados de rastrear os ladrões, recuperar a jóia e restaurar a paz na cidade. A busca pelo ladrão e a recuperação do artefato podem levar os personagens por um caminho repleto de intrigas, traições e segredos obscuros.",
+        "imagem": "https://source.unsplash.com/random/200x200?sig=1",
+        "eventos": [],
+        "locais": [],
+        "personagens": [],
+        "id": 4
+      },
+      {
+        "nome": "Torneio de Magia Arcana",
+        "data_inicio": "12 de Julho",
+        "data_fim": "16 de Julho",
+        "descricao": "O Torneio de Magia Arcana atrai feiticeiros e bruxos de todo o mundo para competir em desafios mágicos e provar sua habilidade na arte da feitiçaria.",
+        "imagem": "https://source.unsplash.com/random/200x200?sig=1",
+        "eventos": [],
+        "locais": [],
+        "personagens": [],
+        "id": 5
+      },
+      {
+        "nome": "A Profecia das Estrelas",
+        "data_inicio": "2 de Novembro",
+        "data_fim": "2 de Novembro",
+        "descricao": "Uma profecia antiga prevê um evento cósmico significativo. Os personagens devem decifrar a profecia e evitar uma catástrofe iminente.",
+        "imagem": "https://source.unsplash.com/random/200x200?sig=1",
+        "eventos": [],
+        "locais": [],
+        "personagens": [],
+        "id": 6
+      },
+      {
+        "nome": "Assalto à Fortaleza Negra",
+        "data_inicio": "17 de Setembro",
+        "data_fim": "20 de Setembro",
+        "descricao": "Os personagens planejam e executam um assalto audacioso à Fortaleza Negra, o covil de um temido lorde das trevas.",
+        "imagem": "https://source.unsplash.com/random/200x200?sig=1",
+        "eventos": [],
+        "locais": [],
+        "personagens": [],
+        "id": 7
+      },
+      {
+        "nome": "A Epidemia de Sombras",
+        "data_inicio": "7 de Maio",
+        "data_fim": "15 de Maio",
+        "descricao": "Uma epidemia mágica assola o reino, transformando seres em sombras aterrorizantes. Os personagens devem encontrar a cura e descobrir a causa.",
+        "imagem": "https://source.unsplash.com/random/200x200?sig=1",
+        "eventos": [],
+        "locais": [],
+        "personagens": [],
+        "id": 8
+      },
+      {
+        "nome": "A Corrida dos Dragões",
+        "data_inicio": "20 de Agosto",
+        "data_fim": "23 de Agosto",
+        "descricao": "Os personagens participam na Corrida dos Dragões, uma competição lendária de dragões alados. Eles enfrentarão desafios aéreos emocionantes e concorrentes ferozes.",
+        "imagem": "https://source.unsplash.com/random/200x200?sig=1",
+        "eventos": [],
+        "locais": [],
+        "personagens": [],
+        "id": 9
+      },
+      {
+        "nome": "Despertar do Titã Ancião",
+        "data_inicio": "30 de Outubro",
+        "data_fim": "31 de Outubro",
+        "descricao": "Um antigo Titã despertou de seu sono eterno, ameaçando mergulhar o mundo na escuridão. Os personagens devem encontrar uma maneira de selar o Titã novamente.",
+        "imagem": "https://source.unsplash.com/random/200x200?sig=1",
+        "eventos": [],
+        "locais": [],
+        "personagens": [],
+        "id": 10
+      },
+      {
+        "nome": "Fuga do Labirinto Mágico",
+        "data_inicio": "5 de Fevereiro",
+        "data_fim": "5 de Fevereiro",
+        "descricao": "Os personagens são aprisionados em um labirinto mágico por um feiticeiro vil. Eles devem desvendar enigmas, enfrentar criaturas místicas e encontrar uma saída.",
+        "imagem": "https://source.unsplash.com/random/200x200?sig=1",
+        "eventos": [],
+        "locais": [],
+        "personagens": [],
+        "id": 11
+      },
+      {
+        "nome": "A Maldição do Espelho Sombrio",
+        "data_inicio": "14 de Abril",
+        "data_fim": "17 de Abril",
+        "descricao": "Um espelho mágico amaldiçoado está roubando a alma das pessoas. Os personagens devem rastrear o espelho e quebrar a maldição antes que seja tarde demais.",
+        "imagem": "https://source.unsplash.com/random/200x200?sig=1",
+        "eventos": [],
+        "locais": [],
+        "personagens": [],
+        "id": 12
+      },
+      {
+        "nome": "Intriga na Corte Real",
+        "data_inicio": "8 de Julho",
+        "data_fim": "11 de Julho",
+        "descricao": "Uma trama mortal está se desenrolando na corte real. Os personagens devem descobrir os traidores e evitar um golpe que ameaça o reino.",
+        "imagem": "https://source.unsplash.com/random/200x200?sig=1",
+        "eventos": [],
+        "locais": [],
+        "personagens": [],
+        "id": 13
+      },
+      {
+        "nome": "O Enigma da Esfera Astral",
+        "data_inicio": "3 de Setembro",
+        "data_fim": "5 de Setembro",
+        "descricao": "Uma esfera mágica de origem desconhecida apareceu. Os personagens devem decifrar seus segredos e desvendar seu poder antes que caia nas mãos erradas.",
+        "imagem": "https://source.unsplash.com/random/200x200?sig=1",
+        "eventos": [],
+        "locais": [],
+        "personagens": [],
+        "id": 14
+      },
+      {
+        "nome": "A Busca pelo Cálice da Eternidade",
+        "data_inicio": "25 de Novembro",
+        "data_fim": "30 de Novembro",
+        "descricao": "Uma profecia antiga aponta para a existência do Cálice da Eternidade, que concede a imortalidade. Os personagens embarcam em uma jornada perigosa para encontrá-lo.",
+        "imagem": "https://source.unsplash.com/random/200x200?sig=1",
+        "eventos": [],
+        "locais": [],
+        "personagens": [],
+        "id": 15
+      },
+      {
+        "nome": "A Aliança dos Clãs Selvagens",
+        "data_inicio": "12 de Março",
+        "data_fim": "16 de Março",
+        "descricao": "Os personagens são chamados para ajudar a forjar uma aliança",
+        "imagem": "https://source.unsplash.com/random/200x200?sig=1",
+        "eventos": [],
+        "locais": [],
+        "personagens": [],
+        "id": 16
+      }
+    ]
+  }
