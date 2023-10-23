@@ -26,7 +26,7 @@
         "arquitetura do local": "arranha-céus, plataformas flutuantes, engrenagens mecânicas",
         "geografia do local": "clima temperado, tecnologia avançada",
         "história do local": "uma cidade tecnológica de inovação e progresso",
-        "id": 5
+        "id": 4
       },
       {
         "nome": "Shurima",
@@ -43,4 +43,4 @@
         "id": 7
       }
     ]
-  }
+}
