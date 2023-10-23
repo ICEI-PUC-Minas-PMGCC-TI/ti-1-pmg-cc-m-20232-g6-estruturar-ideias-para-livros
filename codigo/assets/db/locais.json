@@ -1,0 +1,46 @@
+{
+    "locais": [
+      {
+        "nome": "Demacia",
+        "arquitetura do local": "fortalezas imponentes, torres de vigia, ruas de paralelepípedos",
+        "geografia do local": "clima temperado, vastas planícies verdes",
+        "história do local": "um reino lendário conhecido por sua justiça e honra",
+        "id": 1
+      },
+      {
+        "nome": "Zaun",
+        "arquitetura do local": "construções verticais, pontes suspensas, dutos de vapor",
+        "geografia do local": "clima úmido, poluição industrial",
+        "história do local": "um submundo de inovação e corrupção",
+        "id": 2
+      },
+      {
+          "nome": "Freljord",
+          "arquitetura do local": "cabanas de madeira, totemes de gelo, muralhas de neve",
+          "geografia do local": "clima glacial, vastas montanhas e florestas congeladas",
+          "história do local": "um reino congelado de guerreiros ferozes",
+          "id": 3
+      },
+      {
+        "nome": "Piltover",
+        "arquitetura do local": "arranha-céus, plataformas flutuantes, engrenagens mecânicas",
+        "geografia do local": "clima temperado, tecnologia avançada",
+        "história do local": "uma cidade tecnológica de inovação e progresso",
+        "id": 5
+      },
+      {
+        "nome": "Shurima",
+        "arquitetura do local": "pirâmides antigas, estátuas de deuses, ruínas misteriosas",
+        "geografia do local": "clima desértico, vastas dunas de areia",
+        "história do local": "uma civilização antiga ressurgindo das areias",
+        "id": 6
+      },
+      {
+        "nome": "Bandle City",
+        "arquitetura do local": "cavernas aconchegantes, túneis decorados, casas em árvores",
+        "geografia do local": "clima agradável, vegetação exuberante",
+        "história do local": "a cidade dos yordles, conhecida por sua amizade e travessuras",
+        "id": 7
+      }
+    ]
+  }
