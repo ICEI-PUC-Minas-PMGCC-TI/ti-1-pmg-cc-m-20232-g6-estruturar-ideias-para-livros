@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>StoryArc - Timeline</title>
+        <!--
+            Estilos do CSS e bootstrap estão aqui - "main.css" é o bootstrap compilado com as cores que nós decidimos
+            Se você quiser adicionar algo novo, crie seu proprio style.css (na página do seu documento) e eventualmente iremos juntá-lo a um style.css padronizado
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <link rel="stylesheet" href="../../assets/css/main.css">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+        
+    </head>
+    
+    <body class="bg-light text-dark">
+        
+        <style>
+            .slider:hover {
+                opacity: 1;
+            }
+            
+            .slider::-webkit-slider-thumb {
+                -webkit-appearance: none; 
+                appearance: none;
+                width: 25px; 
+                height: 25px; 
+                background: #04AA6D; 
+                cursor: pointer;
+            }
+            
+            .slider::-moz-range-thumb {
+                width: 25px;
+                height: 25px; 
+                background: #04AA6D; 
+                cursor: pointer; 
+            }
+    </style>
+
+    <!--Cabeçalho-->
+    <div class="container-fluid">
+        <div class="shadow border-bottom border-secondary border-2 bg-primary bg-gradient h-100 row align-items-center">
+            <div class="navbar navbar-expand-lg">
+                <div class="container-fluid">
+                    <img src="../../assets/images/logo-dark.png" height="30" class="text-dark rounded">
+                </div>
+            </div>
+        </div>
+        
+        <!--main-->
+        <div class="container text-center rounded rounded-3 bg-light bg-gradient mt-5 py-2 shadow">
+            <!--ROW-->
+            <div class="row" style="height: 100%; overflow: hidden;">
+                <!--COL esquerda-->
+                <div class="my-5 col-md-8 rounded border-end" style="height: 80vh;">
+                    <h1>Timeline</h1>
+                    <img src="https:source.unsplash.com/random/250x250" class="mt-4 border border- rounded-circle" alt="Evento">
+                    <input type="range" min="1" max="100" value="50" class="slider mt-5" id="timeline"
+                style="  -webkit-appearance: none; appearance: none; width: 100%; background: #d3d3d3; outline: none; opacity: 0.7; -webkit-transition: .2s; transition: opacity .2s;">
+            </div>
+            
+            <!--COL direita-->
+            <div class="col-md-4">
+                <iframe src="../cadastro-evento/cadastro-evento.html" width="100%" height="100%"></iframe>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
