@@ -1,0 +1,14 @@
+.row.flex-grow-1 {
+    height: 400px; 
+  }
+  
+  .col {
+    width: 100%; 
+  }
+  #inputSinopse {
+    width: 100%; 
+    height: 1000%; 
+    resize: none; 
+  
+  }
+  
