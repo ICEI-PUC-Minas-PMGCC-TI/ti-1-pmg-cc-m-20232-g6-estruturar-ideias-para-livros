@@ -1,0 +1,60 @@
+{
+    "usuarios": [
+        {
+            // dados do usuario
+            "historias": [
+                {
+                    // dados da historia
+                    "eventos": [
+                        {
+                            // dados do evento
+                            "conexoes": {
+                                "eventos": [
+                                    "ids"
+                                ],
+                                "locais": [
+                                    "ids"
+                                ],
+                                "personagens": [
+                                    "ids"
+                                ]
+                            }
+                        }
+                    ],
+                    "locais": [
+                        {
+                            // dados do local
+                            "conexoes": {
+                                "eventos": [
+                                    "ids"
+                                ],
+                                "locais": [
+                                    "ids"
+                                ],
+                                "personagens": [
+                                    "ids"
+                                ]
+                            }
+                        }
+                    ],
+                    "personagens": [
+                        {
+                            // dados do personagem
+                            "conexoes": {
+                                "eventos": [
+                                    "ids"
+                                ],
+                                "locais": [
+                                    "ids"
+                                ],
+                                "personagens": [
+                                    "ids"
+                                ]
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
