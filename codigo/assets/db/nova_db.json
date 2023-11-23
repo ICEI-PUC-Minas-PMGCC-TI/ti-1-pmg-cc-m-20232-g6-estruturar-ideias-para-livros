@@ -1,0 +1,77 @@
+{
+    "usuários": [
+        {
+            "id": 1,
+            "nome": "Nome de Usuario",
+            "senha": "PeloAmorDeDeusNaoTestaComSuaSenhaPqDaPraVer",
+            "historias": [
+                {
+                    "id": 1,
+                    "nome": "Avaloria",
+                    "imagem": "https://w0.peakpx.com/wallpaper/47/289/HD-wallpaper-fantasy-forest-fantasy-dark-magic-beautiful-enchanted-night-forest-spring.jpg",
+                    "genero": "aventura",
+                    "sinopse": "Há muito tempo atrás, no reino de Avaloria...",
+                    "eventos": [
+                        {
+                            "id": 1,
+                            "nome": "Morte do Rei",
+                            "imagem": "https://source.unsplash.com/random/200x200?sig=1",
+                            "data_inicio": "10/05/300",
+                            "data_fim": "",
+                            "descricao": "A morte do rei após a primeira guerra",
+                            "conexoes": {
+                                "eventos": [],
+                                "locais": [
+                                    1
+                                ],
+                                "personagens": []
+                            }
+                        }
+                    ],
+                    "locais": [
+                        {
+                            "id": 1,
+                            "nome": "Reino de Avaloria",
+                            "imagem": "https://source.unsplash.com/random/200x200?sig=1",
+                            "arquitetura": "Casas grandes, quadradas, telhados afiados, casas coloridas",
+                            "geografia": "Montanhoso",
+                            "historia": "Um reino com uma história prolongada",
+                            "conexoes": {
+                                "eventos": [
+                                    1,
+                                    2
+                                ],
+                                "locais": [
+                                    2
+                                ],
+                                "personagens": [
+                                    1
+                                ]
+                            }
+                        }
+                    ],
+                    "personagens": [
+                        {
+                            "id": 1,
+                            "nome": "Cayn",
+                            "imagem": "https://source.unsplash.com/random/200x200?sig=1",
+                            "raca": "Humano",
+                            "nascimento": "15/04/320",
+                            "papel": "Protagonista",
+                            "conexoes": {
+                                "eventos": [
+                                    1,
+                                    2
+                                ],
+                                "locais": [
+                                    1
+                                ],
+                                "personagens": []
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
