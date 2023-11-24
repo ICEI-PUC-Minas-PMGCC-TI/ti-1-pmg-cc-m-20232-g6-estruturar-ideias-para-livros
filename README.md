@@ -7,16 +7,16 @@ O plano do projeto é oferecer ao escritor uma forma melhor de organizar suas id
 
 ## Alunos integrantes da equipe
 
-* Isaque Dias Noronha
-* Carlos Augusto Lopes Xavier
-* Luiz Felipe Alves da Silva
 * Arthur Henrique de Lima Santos
+* Carlos Augusto Lopes Xavier
+* Isaque Dias Noronha
+* Luiz Felipe Alves da Silva
+
 
 ## Professores responsáveis
 
 * Ilo Amy Saldanha Rivero
 * João Carlos Oliveira Caetano
-* Luciana Mara Freitas
 * Rommel Vieira Carneiro 
 
 
