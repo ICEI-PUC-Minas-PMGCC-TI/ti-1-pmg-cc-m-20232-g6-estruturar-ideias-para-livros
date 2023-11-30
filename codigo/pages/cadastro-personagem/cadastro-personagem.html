@@ -11,6 +11,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="../../assets/css/main.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+   <script src="../../assets/js/cadastro-personagem.js" defer></script>
 </head>
 <body class="bg-light text-dark">
     <div class="container-fluid">
@@ -22,11 +23,12 @@
             </div>
         </div>
 
+        <!--Container Superior, Topo da Pagina (área de "gerais" do personagem)-->
         <div class="container text-center rounded rounded-3 bg-light bg-gradient mt-5 py-2 shadow">
             <h1 class="bg-secondary bg-gradient rounded rounded-3 p-1">Cadastro de Personagem</h1>
             <div class="row border-top">
                 <div class="col-md-auto">
-                    <img src="https://thispersondoesnotexist.com/" class="img-thumbnail my-2" alt="..." width="300px">
+                    <img src="https://thispersondoesnotexist.com/" class="img-thumbnail my-2" alt="..." id="imagemPersonagem" width="300px">
                 </div>
                 <div class="py-2 d-flex flex-column col-sm">
                     <!--NOME-->
@@ -41,7 +43,7 @@
                         <input type="text" class="form-control" id="inputRaca" aria-describedby="raçaAjuda">
                     </div>
                     <!--PAPEL-->
-                    <label for="inputPapel" class="form-label fs-5">Papeis<nobr class="opacity-50 fs-6">(Ex: Heroi, vilão, Ant-heroi)</nobr></label>
+                    <label for="inputPapel" class="form-label fs-5">Papel<nobr class="opacity-50 fs-6">(Ex: Heroi, vilão, Ant-heroi)</nobr></label>
                     <div class="input-group input-group-sm flex-grow-1">
                         <input type="text" class="form-control" id="inputPapel" aria-describedby="papelAjuda">
                     </div>
@@ -51,48 +53,66 @@
                     <label for="inputDescrição" class="form-label fs-5">Descrição</label>
                     <div class="row flex-grow-1">
                         <div class="col">
-                            <textarea type="text" class="form-control h-100" id="inputSinopse" aria-describedby="sinopseAjuda"></textarea>
+                            <textarea type="text" class="form-control h-100" id="inputDescricao" aria-describedby="sinopseAjuda"></textarea>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row border-top pt-2">
-                <div class="col">
-                    <button type="button" class="btn btn-success bg-gradient btn-block">Incerir</button>
-                    <button type="button" class="btn btn-warning bg-gradient btn-block">Alterar</button>
-                    <button type="button" class="btn btn-danger bg-gradient btn-block">Excluir</button>
+              <div class="col">
+                <button type="button" class="btn btn-success bg-gradient btn-block" id="botaoIncerir">Inserir</button>
+                <button type="button" class="btn btn-warning bg-gradient btn-block" id="botaoAlterar">Alterar</button>
+                <button type="button" class="btn btn-danger bg-gradient btn-block" data-bs-toggle="modal" data-bs-target="#modalExclusao" id="botaoExcluir">Excluir</button>
+              </div>
+
+              <div class="modal fade" id="modalExclusao" tabindex="-1" aria-labelledby="modalExclusaoLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="modalExclusaoLabel">CONFIRMAR EXCLUSÃO</h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      Tem certesa que quer excluir esse personagem? (não é possivel recuperar um personagem excluido)
+                    </div>
+                    <div class="modal-footer justify-content-center">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar Exclusão</button>
+                      <button type="button" class="btn btn-danger" data-bs-dismiss="modal" id="excluirPersonagem">Confirmar Exclusão</button>
+                    </div>
+                  </div>
                 </div>
+              </div>
             </div>
         </div>
 
-        <!--RELACIONAMENTOS-->
+        <!--CONEXOES-->
         <div class="container rounded rounded-3 bg-light bg-gradient py-1 mt-2 shadow">
-            <h3 class="bg-secondary bg-gradient rounded rounded-3 p-1">Relacionamentos</h3>
-            <label for="inputNome" class="form-label fs-5">Clique nos personagens, locais e eventos relacionados a esse personagem</label>
+            <h3 class="bg-secondary bg-gradient rounded rounded-3 p-1">Conexões</h3>
             <div class="row mt-1">
                 <div class="col-sm-4 py-1 border-end">
-                    <p class="bg-secondary bg-gradient rounded rounded-3 p-1 text-center"><b>Eventos</b></p>
-                    <ul class="list-group">
-                        <a href="#" class="list-group-item list-group-item-action">Evento 1</a>
-                        <a href="#" class="list-group-item list-group-item-action">Evento 2</a>
-                        <a href="#" class="list-group-item list-group-item-action">Evento 3</a>
-                    </ul>
+                  <p class="bg-secondary bg-gradient rounded rounded-3 p-1 text-center"><b>Eventos</b></p>
+                  <!--caixa de texto-->
+                  <div class="text-center pt-2">
+                    <button type="button" class="btn btn-success bg-gradient btn-block">Novo</button>
+                  </div>
                 </div>
                 <div class="col-sm-4 py-1">
-                    <p class="bg-secondary bg-gradient rounded rounded-3 p-1 text-center"><b>Locais</b></p>
-                    <ul class="list-group">
-                        <a href="#" class="list-group-item list-group-item-action">Local 1</a>
-                        <a href="#" class="list-group-item list-group-item-action">Local 2</a>
-                        <a href="#" class="list-group-item list-group-item-action">Local 3</a>
-                    </ul>
+                  <p class="bg-secondary bg-gradient rounded rounded-3 p-1 text-center"><b>Locais</b></p>
+                  <!--caixa de texto-->
+                  <div class="text-center pt-2">
+                    <button type="button" class="btn btn-success bg-gradient btn-block">Novo</button>
+                  </div>
                 </div>
                 <div class="col-sm-4 py-1 border-start">
-                    <p class="bg-secondary bg-gradient rounded rounded-3 p-1 text-center"><b>Personagens</b></p>
-                    <ul class="list-group">
-                        <a href="#" class="list-group-item list-group-item-action">Personagem 1</a>
-                        <a href="#" class="list-group-item list-group-item-action">Personagem 2</a>
-                        <a href="#" class="list-group-item list-group-item-action">Personagem 3</a>
-                    </ul>
+                  <p class="bg-secondary bg-gradient rounded rounded-3 p-1 text-center"><b>Personagens</b></p>
+                  <ul class="list-group" id="listaPersonagens">
+                    <a href="#" class="list-group-item list-group-item-action">Personagem 1</a>
+                    <a href="#" class="list-group-item list-group-item-action">Personagem 2</a>
+                    <a href="#" class="list-group-item list-group-item-action">Personagem 3</a>
+                  </ul>
+                  <div class="text-center pt-2">
+                    <button type="button" class="btn btn-success bg-gradient btn-block">Novo</button>
+                  </div>
                 </div>
             </div>
         </div>
