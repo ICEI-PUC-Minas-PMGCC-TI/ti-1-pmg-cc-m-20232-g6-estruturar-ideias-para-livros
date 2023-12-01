@@ -1,0 +1,22 @@
+
+ul{
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none; 
+}
+ul li a{
+    text-decoration: none;
+    color: #080908;
+    font-size: 22px;
+    display: block;
+    padding: 10px 15px;
+    position: relative;
+    margin-right: 30px;
+}
+
+ul li a:hover{
+    color:rgb(0, 102, 34)
+}
+
