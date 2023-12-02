@@ -1,32 +1,145 @@
-const databaseLink = "https://jsonserver-historias.isaquedias1.repl.co/historias";
+const databaseLink = "https://jsonserver-isaque-final.isaquedias1.repl.co";
+const linkInicial = "../../";
+var idUsuario = 0;
+var idHistoria = 0;
 
-// Carrega a história em uma var "historiaCarregada"
-function carregarHistoria(carregarId) {
-    // Procura o arquivo json
-    fetch(databaseLink + "/" + carregarId)
+//////
+// ADMINISTRA USUARIO E HISTORIA
+/////
+function alterarIdHistoria(novoId) {
+    if (novoId <= 0) {
+        return;
+    }
+
+    if (novoId) {
+        idHistoria = novoId;
+    }
+}
+
+function alterarIdUsuario() {
+    const novoId = parametro("usuario");
+    if (novoId) {
+        idUsuario = novoId; 
+    } else {
+        usuarioNull();        
+    }
+
+    fetch(databaseLink + "/usuarios/" + idUsuario)
         .then(response => response.json())
-        .then(historiaCarregada => {
+        .then(data => {
+            if (Object.keys(data).length == 0) {
+                usuarioNull();
+            }
+        })
+}
+
+function usuarioNull() {
+    alert("Nenhum usuário foi encontrado. Você será mandado para a página principal.");
+}
+
+//////
+//  ADMINISTRA JSON
+//////
+function carregarHistoria() {
+    if (idHistoria == 0) {
+        return;
+    }
+
+    fetch(databaseLink + "/historias/" + idHistoria)
+        .then(response => response.json())
+        .then(data => {
             // Cancela o carregamento se nao tiver encontrado nenhuma historia
-            if (Object.keys(historiaCarregada).length == 0) {
+            if (Object.keys(data).length == 0) {
                 return;
             }
 
             // Carrega a página
-            alterarImagem("imagemHistoria", historiaCarregada.imagem);
+            htmlImagem("imagemHistoria", data.imagem);
 
-            alterarInput("inputNome", historiaCarregada.nome);
-            alterarInput("inputGenero", historiaCarregada.genero);
-            alterarInput("inputSinopse", historiaCarregada.sinopse);
+            htmlInput("inputNome", data.nome);
+            htmlInput("inputGenero", data.genero);
+            htmlInput("inputSinopse", data.sinopse);
+        })
 
-            inserirLista("listaEventos", historiaCarregada.eventos);
-            inserirLista("listaLocais", historiaCarregada.locais);
-            inserirLista("listaPersonagens", historiaCarregada.personagens);
+    fetch(databaseLink + "/eventos?id_historia=" + idHistoria)
+        .then(response => response.json())
+        .then(data => {
+            htmlLista("listaEventos", data, "evento");
+        })
+
+    fetch(databaseLink + "/personagens?id_historia=" + idHistoria)
+        .then(response => response.json())
+        .then(data => {
+            htmlLista("listaPersonagens", data, "personagem");
+        })
+
+    fetch(databaseLink + "/locais?id_historia=" + idHistoria)
+        .then(response => response.json())
+        .then(data => {
+            htmlLista("listaLocais", data, "locais");
         })
 }
 
-// Executa quando o usuário clica em "Confirmar Exclusão"
-function excluirHistoria(excluirId) {
-    fetch(databaseLink + "/" + excluirId, {
+function salvarHistoria() {
+    const JSONConstruido = construirJSON();
+
+    // Envia o arquivo para o banco de dados
+    fetch(`${databaseLink}/historias/`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(JSONConstruido)
+    })
+        // Testa por erros
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Erro na solicitação POST");
+            }
+        })
+        // Se não houver erro, executa o seguinte
+        .then(data => {
+            alert(`História ${JSONConstruido.nome} salva com sucesso!`);
+            alterarIdHistoria(encontrarPorNome(idUsuario, JSONConstruido.nome));
+        })
+        // Se houver erro, executa o seguinte
+        .catch(error => {
+            alert(`Erro ao salvar ${JSONConstruido.nome}!`);
+            console.error("Erro na solicitação POST: ", error);
+        })
+}
+
+function atualizarHistoria() {
+    const JSONConstruido = construirJSON();
+
+    // Atualiza o arquivo no banco de dados
+    fetch(`${databaseLink}/historias/${idHistoria}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(JSONConstruido)
+    })
+        // Testa por erros
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Erro na solicitação POST");
+            }
+        })
+        // Se não houver erro, executa o seguinte
+        .then(data => {
+            alert(`História ${JSONConstruido.nome} atualizada com sucesso!`);
+            alterarIdHistoria(encontrarPorNome(idUsuario, JSONConstruido.nome));
+        })
+        // Se houver erro, executa o seguinte
+        .catch(error => {
+            alert(`Erro ao atualizar ${JSONConstruido.nome}!`);
+            console.error("Erro na solicitação POST: ", error);
+        })
+}
+
+function excluirHistoria() {
+    fetch(databaseLink + "/historias/" + idHistoria, {
         method: 'DELETE'
     })
         .then(function () {
@@ -34,248 +147,132 @@ function excluirHistoria(excluirId) {
         })
 }
 
-// Executa quando o usuário clica em "Salvar"
-function salvarOuAtualizar() {
-    const idHistoria = carregarParametroURL("historia");
+//////
+//  ELEMENTOS DA PÁGINA
+//////
+function htmlImagem(idElemento, URL) {
+    let imagem = document.getElementById(idElemento);
 
-    // Se a página não tiver parametro historia, salva uma nova
-    // Se tiver, testa se contém algo para decidir entre atualizar ou salvar uma nova
-    if (!idHistoria) {
+    if (imagem == null) {
+        console.log("Erro ao carregar elemento de ID " + idElemento);
+        return;
+    }
+
+    imagem.src = URL;
+}
+
+function htmlInput(idElemento, texto) {
+    let caixaInput = document.getElementById(idElemento);
+
+    // Confere se há algum elemento vazio
+    if (caixaInput == null) {
+        console.log("Erro ao carregar elemento de ID " + idElemento);
+        return;
+    }
+    if (texto == null) {
+        console.log("Texto em " + idElemento + " é nulo")
+    }
+
+    // Altera o texto
+    caixaInput.value = texto;
+}
+
+function htmlLista(idElemento, lista, tipo) {
+    let listaHTML = document.getElementById(idElemento);
+    // Limpa o elemento no HTML (caso contenha algo)
+    listaHTML.innerHTML = '';
+
+    // Passa por cada elemento da lista
+    lista.forEach(item => {
+        // Cria um elemento "elementoLista" e altera
+        let elementoLista = document.createElement("a");
+        elementoLista.href = `${linkInicial}/cadastro-${tipo}/cadastro-${tipo}?id=${elementoLista.id}`;
+        elementoLista.className = "list-group-item list-group-item-action";
+        elementoLista.textContent = item.nome;
+
+        // Adiciona "elementoLista" para o HTML
+        listaHTML.appendChild(elementoLista);
+    })
+}
+
+//////
+//  BOTÕES
+//////
+function botaoSalvar() {
+    if (idHistoria == 0) {
+        console.log("Tentando salvar historia...")
         salvarHistoria();
-        console.log("Nova história salva (URL não continha ID)");
     } else {
-        fetch(databaseLink + "/" + idHistoria)
-            .then(response => response.json())
-            .then(historiaCarregada => {
-                if (Object.keys(historiaCarregada).length == 0) {
-                    salvarHistoria();
-                    console.log("Nova história salva (ID na URL não direciona para nenhuma história)");
-                } else {
-                    atualizarHistoria(idHistoria);
-                    console.log("História atualizada (ID na URL direcionava para história)");
-                }
-            })
+        console.log(`Tentando atualizar historia de id ${idHistoria}...`);
+        atualizarHistoria();
     }
 }
 
-function atualizarHistoria(atualizarId) {
-    // Usa a função "construirJSON" para criar uma nova história
-    let jsonConstruido = construirJSON();
-    console.log("Objeto JSON criado:", jsonConstruido);
+function botaoExcluir() {
+    console.log("Tentando excluir história...")
+    if (idHistoria == 0) {
+        alert("Nenhuma história para excluir.");
+    } else {
+        excluirHistoria();
+    }
+}
 
-    // Envia o arquivo para o banco de dados
-    fetch(databaseLink + "/" + atualizarId, {
-        method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(jsonConstruido)
-    })
-        // Testa por erros
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("Erro na solicitação POST");
+//////
+//  UTILIDADES
+//////
+function parametro(nome) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(nome);
+}
+
+function encontrarPorNome(idUsuario, nome) {
+    var search = `${databaseLink}/historias?id_usuario=${idUsuario}&${nome}`
+    return fetch(search)
+        .then(response => response.json())
+        .then(data => {
+            if (Array.isArray(data) && data.length > 0) {
+                return data[0].id;
+            } else {
+                return null;
             }
         })
-        // Se não houver erro, executa o seguinte
-        .then(data => {
-            let botao = document.getElementById("salvarHistoria");
-
-            // Troca o conteúdo do botão para "Sucesso!"
-            botao.textContent = "Sucesso!";
-
-            // Aguarda 5 segundos e depois restaura o conteúdo para "Salvar"
-            setTimeout(function () {
-                botao.textContent = "Salvar";
-            }, 5000); // 5000 milissegundos (5 segundos)
-        })
         .catch(error => {
-            console.error("Erro na solicitação POST: ", error);
-        })
-        .then(() => {
-            carregarPaginaPorNome(jsonConstruido.nome);
+            console.error("Erro na pesquisa:", error);
+            throw error;
         });
 }
 
-function salvarHistoria() {
-    // Usa a função "construirJSON" para criar uma nova história
-    let jsonConstruido = construirJSON();
-    console.log("Objeto JSON criado:", jsonConstruido);
-
-
-    // Envia o arquivo para o banco de dados
-    fetch(databaseLink, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(jsonConstruido)
-    })
-        // Testa por erros
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("Erro na solicitação POST");
-            }
-        })
-        // Se não houver erro, executa o seguinte
-        .then(data => {
-            let botao = document.getElementById("salvarHistoria");
-
-            // Troca o conteúdo do botão para "Sucesso!"
-            botao.textContent = "Sucesso!";
-
-            // Aguarda 5 segundos e depois restaura o conteúdo para "Salvar"
-            setTimeout(function () {
-                botao.textContent = "Salvar";
-            }, 5000); // 5000 milissegundos (5 segundos)
-        })
-        // Se houver erro, executa o seguinte
-        .catch(error => {
-            console.error("Erro na solicitação POST: ", error);
-        })
-        .then(() => {
-            carregarPaginaPorNome(jsonConstruido.nome);
-        });
-}
-
-// Cria um JSON novo (usado para salvar/atualizar)
-// Não salva eventos, locais e personagens, e apaga se existentes (por enquanto)
 function construirJSON() {
     let inputNome = document.getElementById("inputNome").value;
     let inputGenero = document.getElementById("inputGenero").value;
     let inputSinopse = document.getElementById("inputSinopse").value;
 
     const jsonConstruido = {
+        id_usuario: idUsuario,
         nome: inputNome,
         genero: inputGenero,
         sinopse: inputSinopse,
-        imagem: "https://source.unsplash.com/random/200x200?sig=1",
-        eventos: [],
-        locais: [],
-        personagens: []
+        imagem: "https://source.unsplash.com/random/200x200?sig=1"
     };
 
     return jsonConstruido;
 }
 
-// Altera a imagem no elemento "elementId" para conter a imagem na URL
-function alterarImagem(elementId, URL) {
-    let imagem = document.getElementById(elementId);
-
-    // Confere se o elemento existe
-    if (imagem == null) {
-        console.log("Erro ao carregar elemento de ID " + elementId);
-        return;
-    }
-
-    // Altera a imagem
-    imagem.src = URL;
-}
-
-// Troca o elemento "elementId" para conter "novoTexto"
-function alterarInput(elementId, novoTexto) {
-    let caixaInput = document.getElementById(elementId);
-
-    // Confere se há algum elemento vazio
-    if (caixaInput == null) {
-        console.log("Erro ao carregar elemento de ID " + elementId);
-        return;
-    }
-    if (novoTexto == null) {
-        console.log("Texto em " + elementId + " é nulo")
-    }
-
-    // Altera o texto
-    caixaInput.value = novoTexto;
-}
-
-// Insere elementos <a> de uma dada "lista" dentro de um dado "elementId"
-function inserirLista(elementId, lista) {
-    let listaHTML = document.getElementById(elementId);
-    // Limpa o elemento no HTML (caso contenha algo)
-    listaHTML.innerHTML = '';
-
-    // Passa por cada elemento da lista
-    lista.forEach(item => {
-        // Cria um elemento "link" e altera
-        let link = document.createElement("a");
-        link.href = "#";
-        link.className = "list-group-item list-group-item-action";
-        link.textContent = item.nome;
-
-        // Adiciona "link" para o HTML
-        listaHTML.appendChild(link);
-    })
-}
-
-// Função para ler algum parametro e retornar seu valor
-function carregarParametroURL(parametro) {
-    const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get(parametro);
-}
-
-function encontrarIDPorNome(nome) {
-    const link = `${databaseLink}?nome=${encodeURIComponent(nome)}`
-    return fetch(link)
-        .then(response => response.json())
-        .then(historiasCarregadas => {
-            if (Array.isArray(historiasCarregadas) && historiasCarregadas.length > 0) {
-                // O recurso foi encontrado
-                return historiasCarregadas[0].id;
-            } else {
-                // O recurso não foi encontrado
-                return null;
-            }
-        })
-        .catch(error => {
-            console.error("Erro na pesquisa:", error);
-            throw error; // Lança o erro para que ele seja capturado fora da função
-        });
-}
-
-function carregarPaginaPorNome(nome) {
-    encontrarIDPorNome(nome)
-    .then(id => {
-        if (id == null) {
-            // Carregar pagina sem parametros
-            console.log("Carregando página sem parametros");
-            window.location.href = URLSemParametros();
-        } else {
-            // Carregar pagina com parametro ID
-            console.log("Carregando página com ID");
-            const novaURL = `${URLSemParametros()}?historia=${id}`;
-            window.location.href = novaURL;
-        };
-    })
-
-    
-}
-
-function URLSemParametros() {
-    return window.location.href.split('?')[0];
-}
-
-// Quando o HTML carregar, o código abaixo será executado
+//////
+//  EVENTOS DA PÁGINA
+//////
 document.addEventListener("DOMContentLoaded", function () {
-    const idHistoria = carregarParametroURL("historia");
-
-    // Se a página tiver algum parametro de historia, carregar a história
-    if (idHistoria) {
-        carregarHistoria(parseInt(idHistoria));
-    }
+    alterarIdUsuario();
+    alterarIdHistoria(parametro("historia"));
+    carregarHistoria(parseInt(idHistoria));
 })
 
 // Adiciona a função de salvar no botão
 document.getElementById("salvarHistoria").addEventListener("click", function () {
-    salvarOuAtualizar();
+    botaoSalvar();
 })
 
 // Adiciona a função de excluir no botão
 document.getElementById("excluirHistoria").addEventListener("click", function () {
-    const idHistoria = carregarParametroURL("historia");
-
-    // Se a página tiver algum parametro de historia, excluir a história
-    if (idHistoria) {
-        excluirHistoria(parseInt(idHistoria));
-    }
+    botaoExcluir();
 })

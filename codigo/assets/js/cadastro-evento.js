@@ -1,7 +1,7 @@
-const databaseLink="https://jsonserver-eventos--arthurkkmal.repl.co/eventos";
+const databaseLink = "jsonserver-isaque-final.isaquedias1.repl.co";
 
 function carregarEvento(carregarID) {
-    fetch(databaseLink + "/" + carregarID)
+    fetch(databaseLink + "/eventos/" + carregarID)
         .then(response => response.json())
         .then(eventoCarregado => {
             if (Object.keys(eventoCarregado).length == 0) {
@@ -12,28 +12,44 @@ function carregarEvento(carregarID) {
             alterarInput("inputEvento", eventoCarregado.nome);
             alterarInput("inputInicio", eventoCarregado.data_inicio);
             alterarInput("inputFim", eventoCarregado.data_fim);
-            alterarInput("inputDescricao", eventoCarregado.descricao);            
+            alterarInput("inputDescricao", eventoCarregado.descricao);
 
             // Defina o valor do campo de ID oculto
             document.getElementById("inputIdEvento").value = eventoCarregado.id;
+        })
 
-            inserirLista("listaEventos", eventoCarregado.eventos);
-            inserirLista("listaLocais", eventoCarregado.locais);
-            inserirLista("listaPersonagens", eventoCarregado.personagens);
-        });
+    fetch(databaseLink + "/eventos?con_eventos=" + carregarId)
+        .then(response => response.json())
+        .then(data => {
+            inserirLista("listaEventos", data);
+        })
+
+    fetch(databaseLink + "/personagens?con_eventos=" + carregarId)
+        .then(response => response.json())
+        .then(data => {
+            inserirLista("listaPersonagens", data);
+        })
+
+    fetch(databaseLink + "/locais?con_eventos=" + carregarId)
+        .then(response => response.json())
+        .then(data => {
+            inserirLista("listaLocais", data);
+        })
+
 }
 
 
-function excluirEvento (excluirID){
 
-    fetch (databaseLink + "/" + excluirID,{
+function excluirEvento(excluirID) {
+
+    fetch(databaseLink + "/" + excluirID, {
         method: 'DELETE'
     })
-    .then (function(){
-        location.reload();
-    })
+        .then(function () {
+            location.reload();
+        })
 }
-document.getElementById("excluirEvento").addEventListener("click", function() {
+document.getElementById("excluirEvento").addEventListener("click", function () {
     const idEvento = document.getElementById("inputIdEvento").value; // Obtenha o ID do evento a ser excluído
 
     if (idEvento) {
@@ -99,12 +115,12 @@ function atualizarEvento(jsonConstruido) {
 
 //SALVA UM NOVO EVENTO
 
-function salvarEvento () {
+function salvarEvento() {
 
     let jsonConstruido = construirJSON();
     console.log("ObjetoJSON criado", jsonConstruido);
 
-    fetch (databaseLink, {
+    fetch(databaseLink, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -112,30 +128,30 @@ function salvarEvento () {
         body: JSON.stringify(jsonConstruido)
     })
 
-    .then (response => {
-        if(!response.ok){
-            throw new Error ("Erro na solicitação POST");
-        }
-    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Erro na solicitação POST");
+            }
+        })
 
-    .then (data => {
+        .then(data => {
 
-        let botao = document.getElementById("salvarEvento");
+            let botao = document.getElementById("salvarEvento");
 
-        botao.textContent = "Sucesso!";
+            botao.textContent = "Sucesso!";
 
-        setTimeout (function() {
-            botao.textContent = "Salvar";
-        }, 5000);
-    })
+            setTimeout(function () {
+                botao.textContent = "Salvar";
+            }, 5000);
+        })
 
-    .catch (error => {
-        console.error("Erro na solicitação POST", error);
-    })
+        .catch(error => {
+            console.error("Erro na solicitação POST", error);
+        })
 
-    .then (() => {
-        carregarPaginaPorEvento(jsonConstruido.evento);
-    });
+        .then(() => {
+            carregarPaginaPorEvento(jsonConstruido.evento);
+        });
 }
 
 function construirJSON() {
@@ -155,40 +171,40 @@ function construirJSON() {
         locais: [],
         personagens: []
     };
-    
+
 
     return jsonConstruido;
 }
 
-function alterarImagem (elementId, URL) {
+function alterarImagem(elementId, URL) {
 
     let imagem = document.getElementById(elementId);
 
-    if(imagem == null) {
-        console.log ("Erro ao carregar elemento de ID ", elementId);
+    if (imagem == null) {
+        console.log("Erro ao carregar elemento de ID ", elementId);
         return;
-    }  
-    
-    imagem.src = URL;    
+    }
+
+    imagem.src = URL;
 }
 
-function alterarInput(elementId, novoTexto){
+function alterarInput(elementId, novoTexto) {
 
     let caixaInput = document.getElementById(elementId);
 
-    if(caixaInput == null){
+    if (caixaInput == null) {
         console.log("Erro ao carregar elemento de ID " + elementId);
         return;
     }
 
-    if(novoTexto == null) {
-        console.log ("Texto em" + elementId + "está vazio");
+    if (novoTexto == null) {
+        console.log("Texto em" + elementId + "está vazio");
     }
 
     caixaInput.value = novoTexto;
 }
 
-function inserirLista(elementId, lista){
+function inserirLista(elementId, lista) {
 
     let listaHTML = document.getElementById(elementId);
 
@@ -197,9 +213,9 @@ function inserirLista(elementId, lista){
     lista.forEach(item => {
         let link = document.createElement("a");
 
-        link.href="#";
-        link.className="list-group-item list-group-item-action";
-        link.textContent=item.none;
+        link.href = "#";
+        link.className = "list-group-item list-group-item-action";
+        link.textContent = item.none;
 
         listaHTML.appendChild(link);
     });
@@ -210,8 +226,8 @@ function carregarParametroURL(parametro) {
     return urlParams.get(parametro);
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-    const idEvento = carregarParametroURL("eventos");
+document.addEventListener("DOMContentLoaded", function () {
+    const idEvento = carregarParametroURL("evento");
 
     if (idEvento) {
         carregarEvento(parseInt(idEvento));
@@ -222,20 +238,20 @@ function encontrarIDPorEvento(evento) {
 
     const link = `${databaseLink}?evento=${encodeURIComponent(evento)}`
     return fetch(link)
-    .then (response => response.json())
-    .then (eventosCarregados =>{
-        if(Array.isArray(eventosCarregados) && eventosCarregados.length > 0) {
-            return eventosCarregados[0].id;
-        }
-        else{
-            return null;
-        }
-    })
+        .then(response => response.json())
+        .then(eventosCarregados => {
+            if (Array.isArray(eventosCarregados) && eventosCarregados.length > 0) {
+                return eventosCarregados[0].id;
+            }
+            else {
+                return null;
+            }
+        })
 
-    .catch (error => {
-        console.error("erro na pesquisa:", error);
-        throw error;
-    })
+        .catch(error => {
+            console.error("erro na pesquisa:", error);
+            throw error;
+        })
 }
 
 function carregarPaginaPorEvento() {
@@ -260,6 +276,6 @@ function URLSemParametros() {
     return window.location.href.split('?')[0];
 }
 
-document.getElementById("salvarEvento").addEventListener("click", function() {
+document.getElementById("salvarEvento").addEventListener("click", function () {
     salvarOuAtualizar();
 })
