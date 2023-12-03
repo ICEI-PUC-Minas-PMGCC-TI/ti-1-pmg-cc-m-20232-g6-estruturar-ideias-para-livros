@@ -1,5 +1,5 @@
 const databaseLink = "https://jsonserver-isaque-final.isaquedias1.repl.co";
-const linkInicial = "../../";
+const linkInicial = "../";
 var idUsuario = 0;
 var idHistoria = 0;
 
@@ -21,7 +21,7 @@ function alterarIdUsuario() {
     if (novoId) {
         idUsuario = novoId; 
     } else {
-        usuarioNull();        
+        usuarioNull();
     }
 
     fetch(databaseLink + "/usuarios/" + idUsuario)
@@ -35,6 +35,10 @@ function alterarIdUsuario() {
 
 function usuarioNull() {
     alert("Nenhum usuário foi encontrado. Você será mandado para a página principal.");
+}
+
+function usuarioSemAcesso() {
+    alert("Essa história não pertence a esse usuário. Cancelando carregamento.")
 }
 
 //////
@@ -53,30 +57,36 @@ function carregarHistoria() {
                 return;
             }
 
+            if (data.id_usuario != parametro("usuario")) {
+                usuarioSemAcesso();
+                return;
+            }
+
             // Carrega a página
             htmlImagem("imagemHistoria", data.imagem);
 
             htmlInput("inputNome", data.nome);
             htmlInput("inputGenero", data.genero);
             htmlInput("inputSinopse", data.sinopse);
-        })
 
-    fetch(databaseLink + "/eventos?id_historia=" + idHistoria)
-        .then(response => response.json())
-        .then(data => {
-            htmlLista("listaEventos", data, "evento");
-        })
+            // Carrega as listas
+            fetch(databaseLink + "/eventos?id_historia=" + idHistoria)
+                .then(response => response.json())
+                .then(data => {
+                    htmlLista("listaEventos", data, "evento");
+                })
 
-    fetch(databaseLink + "/personagens?id_historia=" + idHistoria)
-        .then(response => response.json())
-        .then(data => {
-            htmlLista("listaPersonagens", data, "personagem");
-        })
+            fetch(databaseLink + "/personagens?id_historia=" + idHistoria)
+                .then(response => response.json())
+                .then(data => {
+                    htmlLista("listaPersonagens", data, "personagem");
+                })
 
-    fetch(databaseLink + "/locais?id_historia=" + idHistoria)
-        .then(response => response.json())
-        .then(data => {
-            htmlLista("listaLocais", data, "locais");
+            fetch(databaseLink + "/locais?id_historia=" + idHistoria)
+                .then(response => response.json())
+                .then(data => {
+                    htmlLista("listaLocais", data, "local");
+                })
         })
 }
 
@@ -186,7 +196,7 @@ function htmlLista(idElemento, lista, tipo) {
     lista.forEach(item => {
         // Cria um elemento "elementoLista" e altera
         let elementoLista = document.createElement("a");
-        elementoLista.href = `${linkInicial}/cadastro-${tipo}/cadastro-${tipo}?id=${elementoLista.id}`;
+        elementoLista.href = `${linkInicial}cadastro-${tipo}/cadastro-${tipo}.html?${tipo}=${item.id}&usuario=${idUsuario}&historia=${idHistoria}`;
         elementoLista.className = "list-group-item list-group-item-action";
         elementoLista.textContent = item.nome;
 
@@ -226,7 +236,7 @@ function parametro(nome) {
 }
 
 function encontrarPorNome(idUsuario, nome) {
-    var search = `${databaseLink}/historias?id_usuario=${idUsuario}&${nome}`
+    var search = `${databaseLink}/historias?id_usuario=${idUsuario}&nome=${nome}`
     return fetch(search)
         .then(response => response.json())
         .then(data => {

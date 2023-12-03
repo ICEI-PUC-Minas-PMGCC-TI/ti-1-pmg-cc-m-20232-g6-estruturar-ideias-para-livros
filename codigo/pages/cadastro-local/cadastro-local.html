@@ -45,7 +45,7 @@
             <h1 class="bg-secondary bg-gradient rounded rounded-3 p-1">Cadastro de Locais</h1>
             <div class="row border-top">
                 <div class="col-md-auto">
-                    <img src="https://source.unsplash.com/random/200x200?sig=1" class="img-thumbnail my-2" alt="...">
+                    <img src="https://source.unsplash.com/random/200x200?sig=1" class="img-thumbnail my-2" alt="..." id="imagemLocal">
                 </div>
                 <div class="py-2 d-flex flex-column col-sm">
                     <!--NOME-->
@@ -77,10 +77,30 @@
             </div>
             <div class="row border-top pt-2">
                 <div class="col">
-                    <button type="button" class="btn btn-success bg-gradient btn-block">Salvar</button>
-                    <button type="button" class="btn btn-danger bg-gradient btn-block">Cancelar</button>
-                    <button type="button" class="btn btn-danger bg-gradient btn-block" onclick="excluirLocaisMarcados()">Excluir Local</button>
+                    <button type="button" class="btn btn-success bg-gradient btn-block"
+                        id="salvarLocal">Salvar</button>
+                    <button type="button" class="btn btn-danger bg-gradient btn-block"
+                        data-bs-toggle="modal" data-bs-target="#modalExclusao">Excluir</button>
                 </div>
+
+                <!-- Vertically centered modal -->
+                <div class="modal fade" id="modalExclusao" tabindex="-1" aria-labelledby="modalExclusaoLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h1 class="modal-title fs-5" id="modalExclusaoLabel">CONFIRMAR EXCLUSÃO</h1>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          Você deseja MESMO excluir esse local? (Não há como voltar atrás)
+                        </div>
+                        <div class="modal-footer justify-content-center">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar Exclusão</button>
+                          <button type="button" class="btn btn-danger" data-bs-dismiss="modal" id="excluirLocal">Confirmar Exclusão</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
             </div>
         </div>
         <!--Fim do Container Superior (área de "gerais" dos locais)-->
