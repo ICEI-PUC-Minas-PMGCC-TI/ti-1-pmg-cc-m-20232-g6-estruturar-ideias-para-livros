@@ -230,6 +230,12 @@ function botaoExcluir() {
 //////
 //  UTILIDADES
 //////
+function alterarBotaoSalvar(id) {
+    if (idHistoria != 0) {
+        document.getElementById(id).textContent = "Atualizar"
+    }
+}
+
 function parametro(nome) {
     const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get(nome);
@@ -275,6 +281,7 @@ document.addEventListener("DOMContentLoaded", function () {
     alterarIdUsuario();
     alterarIdHistoria(parametro("historia"));
     carregarHistoria(parseInt(idHistoria));
+    alterarBotaoSalvar("salvarHistoria");
 })
 
 // Adiciona a função de salvar no botão
@@ -285,4 +292,17 @@ document.getElementById("salvarHistoria").addEventListener("click", function () 
 // Adiciona a função de excluir no botão
 document.getElementById("excluirHistoria").addEventListener("click", function () {
     botaoExcluir();
+})
+
+// Botões de "novo"
+document.getElementById("novoEvento").addEventListener("click", function () {
+    window.location.href = linkInicial + "cadastro-evento/cadastro-evento.html?historia=" + idHistoria + "&usuario=" + idUsuario
+})
+
+document.getElementById("novoLocal").addEventListener("click", function () {
+    window.location.href = linkInicial + "cadastro-local/cadastro-local.html?historia=" + idHistoria + "&usuario=" + idUsuario
+})
+
+document.getElementById("novoPersonagem").addEventListener("click", function () {
+    window.location.href = linkInicial + "cadastro-personagem/cadastro-personagem.html?historia=" + idHistoria + "&usuario=" + idUsuario
 })

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,138 +9,170 @@
         Estilos do CSS e bootstrap estão aqui - "main.css" é o bootstrap compilado com as cores que nós decidimos
         Se você quiser adicionar algo novo, crie seu proprio style.css (na página do seu documento) e eventualmente iremos juntá-lo a um style.css padronizado
     -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="../../assets/css/main.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../../assets/css/header.css">
     <script src="../../assets/js/cadastro-evento.js" defer></script>
 </head>
+
 <body class="bg-light text-dark">
-    
-    <!--cabeçalho--> 
+
+    <!--cabeçalho-->
 
     <div class="container-fluid">
         <div class="shadow border-bottom border-secondary border-2 bg-primary bg-gradient h-100 row align-items-center">
             <div class="navbar navbar-expand-lg">
                 <div class="container-fluid">
                     <img src="../../assets/images/logo-dark.png" height="40" class="text-dark rounded">
-                    <div id="button" >
-                        <ul>  
-                         <li><a href="" class="btn btn-outline-success popup-link">Home</a></li>
-                         <li><a href="../../pages/sobre.html/sobre.html" class="btn btn-outline-success popup-link">Sobre</a></li>
-                         <li><a href="" class="btn btn-outline-success popup-link">Login</a></li>
-                         <li><a href="" class="btn btn-outline-success popup-link">Logout</a></li>
-                       </ul> 
-                       </div>
+                    <div id="button">
+                        <ul>
+                            <li><a href="" class="btn btn-outline-success popup-link">Home</a></li>
+                            <li><a href="../../pages/sobre.html/sobre.html"
+                                    class="btn btn-outline-success popup-link">Sobre</a></li>
+                            <li><a href="" class="btn btn-outline-success popup-link">Login</a></li>
+                            <li><a href="" class="btn btn-outline-success popup-link">Logout</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
 
-    <!--top-info-->
+        <!--top-info-->
 
-    <div class="container text-center rounded rounded-3 bg-light bg-gradient mt-5 py-2 shadow">
-        <h1 class="bg-secondary bg-gradient rounded rounded-3 p-1"> 
-            Cadastro de Evento</h1>
-        <div class="row border-top">
-            <div class="col-md-auto">
-                <img src="https://source.unsplash.com/random/200x200?sig=1" class="img-thumbnail my-2" id="imagemEvento" alt="...">
+        <div class="container text-center rounded rounded-3 bg-light bg-gradient mt-5 py-2 shadow">
+            <h1 class="bg-secondary bg-gradient rounded rounded-3 p-1">
+                Cadastro de Evento</h1>
+            <div class="row border-top">
+                <div class="col-md-auto">
+                    <img src="https://source.unsplash.com/random/200x200?sig=1" class="img-thumbnail my-2"
+                        id="imagemEvento" alt="...">
+                </div>
+                <div class="col py-2 d-flex flex-column">
+                    <!--EVENTO-->
+                    <label class="form-label fs-5">Evento</label>
+                    <div class="input-group input-group-md flex-grow-1">
+                        <input type="text" class="form-control" id="inputEvento">
+                    </div>
+
+                    <!--DATA-->
+
+                    <label class="form-label fs-5">Inicio</label>
+                    <div class="input-group input-group-sm flex-grow-1">
+                        <input type="text" class="form-control" id="inputInicio">
+                    </div>
+
+
+                    <label class="form-label fs-5">Fim</label>
+                    <div class="input-group input-group-sm flex-grow-1">
+                        <input type="text" class="form-control" id="inputFim">
+                    </div>
+
+                </div>
+                <div class="col py-2 d-flex flex-column">
+                    <!--DESCRIÇÃO-->
+                    <label class="form-label fs-5">Descrição</label>
+                    <div class="row flex-grow-1">
+                        <div class="col">
+                            <textarea type="text" class="form-control h-100" id="inputDescricao"></textarea>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col py-2 d-flex flex-column">
-                <!--EVENTO-->
-                <label class="form-label fs-5">Evento</label>
-                <div class="input-group input-group-md flex-grow-1">
-                    <input type="text" class="form-control" id="inputEvento">
-                </div>
-                
-                <!--DATA-->
-            
-                <label class="form-label fs-5">Inicio</label>
-                <div class="input-group input-group-sm flex-grow-1">
-                <input type="text" class="form-control" id="inputInicio">
-                </div>
-          
-            
-                <label class="form-label fs-5">Fim</label>
-                <div class="input-group input-group-sm flex-grow-1">
-                    <input type="text" class="form-control" id="inputFim">
-                </div>
-            
-            </div>
-        <div class="col py-2 d-flex flex-column">
-            <!--DESCRIÇÃO-->
-            <label class="form-label fs-5">Descrição</label>
-            <div class="row flex-grow-1">
+            <div class="row border-top pt-2">
                 <div class="col">
-                    <textarea type="text" class="form-control h-100" id="inputDescricao"></textarea>
+                    <button type="button" class="btn btn-success bg-gradient btn-block"
+                        id="salvarEvento">Salvar</button>
+                    <button type="button" class="btn btn-danger bg-gradient btn-block" data-bs-toggle="modal"
+                        data-bs-target="#modalExclusao">Excluir</button>
                 </div>
             </div>
         </div>
-        </div>
-       <div class="row border-top pt-2">
-                <div class="col">
-                    <button type="button" class="btn btn-success bg-gradient btn-block" id="salvarEvento">Salvar</button>
-                    <button type="button" class="btn btn-danger bg-gradient btn-block" data-bs-toggle="modal" data-bs-target="#modalExclusao">Excluir</button>
-                </div>
-            </div>
-    </div>
 
-    <input type="hidden" id="inputIdEvento" />
+        <input type="hidden" id="inputIdEvento" />
 
-    <div class="modal fade" id="modalExclusao" tabindex="-1" aria-labelledby="modalExclusaoLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="modalExclusaoLabel">CONFIRMAR EXCLUSÃO</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    VOCÊ DESEJA MESMO EXCLUIR ESSE EVENTO? (não há como voltar atrás)
-                </div>
-                <div class="modal-footer justify-content-center">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar exclusão</button>
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal" id="excluirEvento">Confirmar exclusão</button>
+        <div class="modal fade" id="modalExclusao" tabindex="-1" aria-labelledby="modalExclusaoLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="modalExclusaoLabel">CONFIRMAR EXCLUSÃO</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Você deseja MESMO excluir esse evento? (não há como voltar atrás)
+                    </div>
+                    <div class="modal-footer justify-content-center">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar
+                            exclusão</button>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                            id="excluirEvento">Confirmar exclusão</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    
-    <!--Conexões-->
-    <div class="container rounded rounded-3 bg-light bg-gradient py-1 mt-2 shadow">
-        <div class="row mt-1">
-            <div class="col-sm-4 py-1 border-end">
-                <p class="bg-secondary bg-gradient rounded rounded-3 p-1 text-center"><b>Eventos</b></p>
-                <ul class="list-group" id="listaEventos">
-                </ul>
-                <div class="text-center pt-2">
-                    <button type="button" class="btn btn-success bg-gradient btn-block">Novo</button>
-                </div>
-            </div>
 
-            <div class="col-sm-4 py-1">
-                <p class="bg-secondary bg-gradient rounded rounded-3 p-1 text-center"><b>Locais</b></p>
-                <ul class="list-group" id="listaLocais">
-                </ul>
-                <div class="text-center pt-2">
-                    <button type="button" class="btn btn-success bg-gradient btn-block">Novo</button>
+        <!--Conexões-->
+        <div class="container rounded rounded-3 bg-light bg-gradient py-1 mt-2 shadow">
+            <h3 class="bg-secondary bg-gradient rounded rounded-3 p-1 mt-1">Conexões</h3>
+            <div class="row mt-1">
+                <div class="col-sm-4 py-1 border-end">
+                    <p class="bg-secondary bg-gradient rounded rounded-3 p-1 text-center"><b>Eventos</b></p>
+                    <ul class="list-group" id="listaEventos">
+                    </ul>
+                    <div class="text-center pt-2">
+                        <button type="button" class="btn btn-success bg-gradient btn-block" id="novoEvento"
+                            data-bs-toggle="modal" data-bs-target="#modalConexoes">Novo</button>
+                    </div>
                 </div>
-            </div>
 
-            <div class="col-sm-4 py-1 border-start">
-                <p class="bg-secondary bg-gradient rounded rounded-3 p-1 text-center"><b>Personagens</b></p>
-                <ul class="list-group" id="listaPersonagens">
-                </ul>
-                <div class="text-center pt-2">
-                    <button type="button" class="btn btn-success bg-gradient btn-block">Novo</button>
+                <div class="col-sm-4 py-1">
+                    <p class="bg-secondary bg-gradient rounded rounded-3 p-1 text-center"><b>Locais</b></p>
+                    <ul class="list-group" id="listaLocais">
+                    </ul>
+                    <div class="text-center pt-2">
+                        <button type="button" class="btn btn-success bg-gradient btn-block" id="novoLocal"
+                            data-bs-toggle="modal" data-bs-target="#modalConexoes">Novo</button>
+                    </div>
+                </div>
+
+                <div class="col-sm-4 py-1 border-start">
+                    <p class="bg-secondary bg-gradient rounded rounded-3 p-1 text-center"><b>Personagens</b></p>
+                    <ul class="list-group" id="listaPersonagens">
+                    </ul>
+                    <div class="text-center pt-2">
+                        <button type="button" class="btn btn-success bg-gradient btn-block" id="novoPersonagem"
+                            data-bs-toggle="modal" data-bs-target="#modalConexoes">Novo</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!--text-area-->
-    <div class="card mt-2">
-    <textarea type="text" class="border-0 m-2" style="height: 90vh;"></textarea>
-    </div>
-
-
+        <!--MODAL CONEXOES-->
+        <div class="modal fade" id="modalConexoes" tabindex="-1" aria-labelledby="modalConexoesLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="modalConexoesLabel">Listando...</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <!--LISTA DINAMICA-->
+                        <p class="bg-secondary bg-gradient rounded rounded-3 p-1 text-center" id="listaDinamicaTitulo">
+                            <b>Titulo</b></p>
+                        <ul class="list-group" id="listaDinamica">
+                        </ul>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger bg-gradient" data-bs-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 </body>
+
 </html>

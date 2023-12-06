@@ -175,6 +175,69 @@ function excluirLocal() {
 //////
 //  ELEMENTOS DA PÁGINA
 //////
+function atualizarModal(tipo) {
+    let listaTitulo = document.getElementById("listaDinamicaTitulo");
+
+    switch (tipo) {
+        case "eventos":
+            listaTitulo.textContent = "Eventos";
+            break;
+        case "personagens":
+            listaTitulo.textContent = "Personagens";
+            break;
+        case "locais":
+            listaTitulo.textContent = "Locais";
+            break;
+    }
+
+    fetch(databaseLink + "/" + tipo + "?id_historia=" + idHistoria)
+        .then(response => response.json())
+        .then(data => {
+            modalLista("listaDinamica", data, tipo);
+        })
+}
+
+function modalLista(idElemento, lista, tipo) {
+    let tipoSingular;
+    switch (tipo) {
+        case "locais":
+            tipoSingular = "local";
+            break;
+        case "personagens":
+            tipoSingular = "personagem";
+            break;
+        case "locais":
+            tipoSingular = "local";
+            break;
+    }
+
+    let listaHTML = document.getElementById(idElemento);
+    // Limpa o elemento no HTML (caso contenha algo)
+    listaHTML.innerHTML = '';
+
+    // Passa por cada elemento da lista
+    lista.forEach(item => {
+        // Cria um elemento "elementoLista" e altera
+        /*let elementoLista = document.createElement("a");
+        elementoLista.href = `${linkInicial}cadastro-${tipo}/cadastro-${tipo}.html?id=${item.id}&usuario=${idUsuario}&historia=${idHistoria}`;
+        elementoLista.className = "list-group-item list-group-item-action";
+        elementoLista.textContent = item.nome;*/
+
+        // Criar o elemento li
+        var listItem = document.createElement("li");
+        listItem.classList.add("list-group-item", "list-group-item-action", "d-flex", "justify-content-between", "align-items-center");
+        listItem.textContent = item.nome;
+
+        listItem.addEventListener("click", function () {
+            console.log("Adicionando conexao entre elemento de id " + idEvento + " e elemento de id " + item.id + " com tipo " + tipoSingular + ", identificado como " + item.nome);
+        })
+
+        // Adiciona "elementoLista" para o HTML
+        listaHTML.appendChild(listItem);
+    })
+}
+
+
 function htmlImagem(idElemento, URL) {
     let imagem = document.getElementById(idElemento);
 
@@ -210,13 +273,36 @@ function htmlLista(idElemento, lista, tipo) {
     // Passa por cada elemento da lista
     lista.forEach(item => {
         // Cria um elemento "elementoLista" e altera
-        let elementoLista = document.createElement("a");
+        /*let elementoLista = document.createElement("a");
         elementoLista.href = `${linkInicial}cadastro-${tipo}/cadastro-${tipo}.html?id=${item.id}&usuario=${idUsuario}&historia=${idHistoria}`;
         elementoLista.className = "list-group-item list-group-item-action";
-        elementoLista.textContent = item.nome;
+        elementoLista.textContent = item.nome;*/
+
+        // Criar o elemento li
+        var listItem = document.createElement("li");
+        listItem.classList.add("list-group-item", "list-group-item-action", "d-flex", "justify-content-between", "align-items-center");
+        listItem.textContent = item.nome;
+
+        listItem.addEventListener("click", function () {
+            window.location.href = `${linkInicial}cadastro-${tipo}/cadastro-${tipo}.html?${tipo}=${item.id}&usuario=${idUsuario}&historia=${idHistoria}`;
+        })
+
+        // Criar o elemento button
+        var button = document.createElement("button");
+        button.type = "button";
+        button.classList.add("btn", "btn-danger", "bg-gradient", "btn-sm");
+        button.textContent = "-";
+
+        // Adicionar o evento de clique ao botão (se necessário)
+        button.addEventListener("click", function () {
+            console.log("Botão clicado!");
+        });
+
+        // Adicionar o botão como filho do elemento li
+        listItem.appendChild(button);
 
         // Adiciona "elementoLista" para o HTML
-        listaHTML.appendChild(elementoLista);
+        listaHTML.appendChild(listItem);
     })
 }
 
@@ -245,6 +331,12 @@ function botaoExcluir() {
 //////
 //  UTILIDADES
 //////
+function alterarBotaoSalvar(id) {
+    if (idLocal != 0) {
+        document.getElementById(id).textContent = "Atualizar"
+    }
+}
+
 function parametro(nome) {
     const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get(nome);
@@ -292,6 +384,7 @@ document.addEventListener("DOMContentLoaded", function () {
     alterarIdUsuario();
     alterarIdHistoria(parametro("historia"));
     alterarIdLocal(parametro("local"));
+    alterarBotaoSalvar("salvarLocal");
     carregarLocal(parseInt(idLocal));
 })
 
@@ -303,4 +396,16 @@ document.getElementById("salvarLocal").addEventListener("click", function () {
 // Adiciona a função de excluir no botão
 document.getElementById("excluirLocal").addEventListener("click", function () {
     botaoExcluir();
+})
+
+document.getElementById("novoPersonagem").addEventListener("click", function() {
+    atualizarModal("personagens");
+})
+
+document.getElementById("novoLocal").addEventListener("click", function() {
+    atualizarModal("locais");
+})
+
+document.getElementById("novoEvento").addEventListener("click", function() {
+    atualizarModal("eventos");
 })
