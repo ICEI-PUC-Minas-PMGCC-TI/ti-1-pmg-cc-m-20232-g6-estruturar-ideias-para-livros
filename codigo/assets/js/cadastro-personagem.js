@@ -4,6 +4,10 @@ var idHistoria = 0;
 var idUsuario = 0;
 var idPersonagem = 0;
 
+var conEventos = [];
+var conLocais = [];
+var conPersonagens = [];
+
 //////
 // ADMINISTRA USUARIO E HISTORIA
 //////
@@ -12,7 +16,9 @@ function alterarIdPersonagem(novoId) {
         return;
     }
 
-    if (novoId) {
+    novoId = parseInt(novoId)
+
+    if (novoId && typeof novoId === 'number') {
         idPersonagem = novoId;
     }
 }
@@ -29,7 +35,7 @@ function alterarIdHistoria() {
 function alterarIdUsuario() {
     const novoId = parametro("usuario");
     if (novoId) {
-        idUsuario = novoId; 
+        idUsuario = novoId;
     } else {
         usuarioNull();
     }
@@ -84,28 +90,32 @@ function carregarPersonagem() {
             htmlInput("inputPapel", data.papel);
             htmlInput("inputDescricao", data.descricao);
 
-            // Carrega as listas
-            fetch(databaseLink + "/eventos?id_historia=" + idHistoria)
-                .then(response => response.json())
-                .then(data => {
-                    htmlLista("listaEventos", data, "evento");
-                })
+            conPersonagens = data.con_personagens;
+            conEventos = data.con_eventos;
+            conLocais = data.con_locais;
 
-            fetch(databaseLink + "/personagens?id_historia=" + idHistoria)
-                .then(response => response.json())
-                .then(data => {
-                    htmlLista("listaPersonagens", data, "personagem");
-                })
-
-            fetch(databaseLink + "/locais?id_historia=" + idHistoria)
-                .then(response => response.json())
-                .then(data => {
-                    htmlLista("listaLocais", data, "local");
-                })
+            atualizarListas();
         })
 }
 
-function salvarPersonagem() {
+function atualizarListas() {
+    receberConexoes("eventos", conEventos)
+        .then(data => {
+            htmlLista("listaEventos", data, "evento");
+        });
+
+    receberConexoes("locais", conLocais)
+        .then(data => {
+            htmlLista("listaLocais", data, "local");
+        });
+
+    receberConexoes("personagens", conPersonagens)
+        .then(data => {
+            htmlLista("listaPersonagens", data, "personagem");
+        });
+}
+
+function salvarPersonagem(semAlerta) {
     const JSONConstruido = construirJSON();
 
     // Envia o arquivo para o banco de dados
@@ -124,7 +134,9 @@ function salvarPersonagem() {
         })
         // Se não houver erro, executa o seguinte
         .then(data => {
-            alert(`Personagem ${JSONConstruido.nome} salvo com sucesso!`);
+            if (semAlerta != true) {
+                alert(`Personagem ${JSONConstruido.nome} salvo com sucesso!`);
+            }
             alterarIdPersonagem(encontrarPorNome(JSONConstruido.nome));
         })
         // Se houver erro, executa o seguinte
@@ -134,7 +146,7 @@ function salvarPersonagem() {
         })
 }
 
-function atualizarPersonagem() {
+function atualizarPersonagem(semAlerta) {
     const JSONConstruido = construirJSON();
 
     // Atualiza o arquivo no banco de dados
@@ -153,7 +165,9 @@ function atualizarPersonagem() {
         })
         // Se não houver erro, executa o seguinte
         .then(data => {
-            alert(`Personagem ${JSONConstruido.nome} atualizado com sucesso!`);
+            if (semAlerta != true) {
+                alert(`Personagem ${JSONConstruido.nome} atualizado com sucesso!`);
+            }
             alterarIdPersonagem(encontrarPorNome(JSONConstruido.nome));
         })
         // Se houver erro, executa o seguinte
@@ -206,8 +220,8 @@ function modalLista(idElemento, lista, tipo) {
         case "personagens":
             tipoSingular = "personagem";
             break;
-        case "locais":
-            tipoSingular = "local";
+        case "eventos":
+            tipoSingular = "evento";
             break;
     }
 
@@ -229,7 +243,34 @@ function modalLista(idElemento, lista, tipo) {
         listItem.textContent = item.nome;
 
         listItem.addEventListener("click", function () {
-            console.log("Adicionando conexao entre elemento de id " + idEvento + " e elemento de id " + item.id + " com tipo " + tipoSingular + ", identificado como " + item.nome);
+            console.log("Adicionando conexao entre elemento de id " + idPersonagem + " e elemento de id " + item.id + " com tipo " + tipoSingular + ", identificado como " + item.nome);
+
+            switch (tipo) {
+                // TODO - Adicionar conexao na outra página (e salvar elemento automatico)
+                case "eventos":
+                    if (!conEventos.includes(item.id)) {
+                        conEventos.push(item.id);
+                        adicionarConExterna(item.id, "eventos");
+                        atualizarPersonagem(true);
+                    }
+                    break;
+                case "personagens":
+                    if (!conPersonagens.includes(item.id)) {
+                        conPersonagens.push(item.id);
+                        adicionarConExterna(item.id, "personagens");
+                        atualizarPersonagem(true);
+                    }
+                    break;
+                case "locais":
+                    if (!conLocais.includes(item.id)) {
+                        conLocais.push(item.id);
+                        adicionarConExterna(item.id, "locais");
+                        atualizarPersonagem(true);
+                    }
+                    break;
+            }
+
+            atualizarListas();
         })
 
         // Adiciona "elementoLista" para o HTML
@@ -271,34 +312,74 @@ function htmlLista(idElemento, lista, tipo) {
 
     // Passa por cada elemento da lista
     lista.forEach(item => {
-        // Cria um elemento "elementoLista" e altera
-        /*let elementoLista = document.createElement("a");
-        elementoLista.href = `${linkInicial}cadastro-${tipo}/cadastro-${tipo}.html?id=${item.id}&usuario=${idUsuario}&historia=${idHistoria}`;
-        elementoLista.className = "list-group-item list-group-item-action";
-        elementoLista.textContent = item.nome;*/
-
         // Criar o elemento li
         var listItem = document.createElement("li");
         listItem.classList.add("list-group-item", "list-group-item-action", "d-flex", "justify-content-between", "align-items-center");
         listItem.textContent = item.nome;
 
-        listItem.addEventListener("click", function () {
+        // Criar o contêiner flexível para os botões
+        var buttonsContainer = document.createElement("div");
+        buttonsContainer.classList.add("d-flex");
+
+        // Criar o elemento button "Ver"
+        var buttonView = document.createElement("button");
+        buttonView.type = "button";
+        buttonView.classList.add("btn", "btn-warning", "bg-gradient", "btn-sm", "mx-1");
+        buttonView.textContent = "Ver";
+
+        buttonView.addEventListener("click", function () {
+            console.log("Botão de ver clicado!");
             window.location.href = `${linkInicial}cadastro-${tipo}/cadastro-${tipo}.html?${tipo}=${item.id}&usuario=${idUsuario}&historia=${idHistoria}`;
-        })
-
-        // Criar o elemento button
-        var button = document.createElement("button");
-        button.type = "button";
-        button.classList.add("btn", "btn-danger", "bg-gradient", "btn-sm");
-        button.textContent = "-";
-
-        // Adicionar o evento de clique ao botão (se necessário)
-        button.addEventListener("click", function () {
-            console.log("Botão clicado!");
         });
 
-        // Adicionar o botão como filho do elemento li
-        listItem.appendChild(button);
+        // Criar o elemento button "-"
+        var buttonRemove = document.createElement("button");
+        buttonRemove.type = "button";
+        buttonRemove.classList.add("btn", "btn-danger", "bg-gradient", "btn-sm", "ml-2"); // Adicionei uma margem à esquerda para separar os botões
+        buttonRemove.textContent = "-";
+
+        buttonRemove.addEventListener("click", function () {
+            // TODO - Adicionar remoçao de lista
+            let index = -1;
+            switch (tipo) {
+                // TODO - Adicionar conexao na outra página (e salvar elemento automatico)
+                case "evento":
+                    index = conEventos.indexOf(item.id);
+                    if (index !== -1) {
+                        conEventos.splice(index);
+                        atualizarListas();
+                        removerConExterna(item.id, "eventos");
+                        atualizarPersonagem(true);
+                    }
+                    break;
+                case "personagem":
+                    index = conPersonagens.indexOf(item.id);
+                    if (index !== -1) {
+                        conPersonagens.splice(index);
+                        atualizarListas();
+                        removerConExterna(item.id, "personagens");
+                        atualizarPersonagem(true);
+                    }
+                    break;
+                case "local":
+                    index = conLocais.indexOf(item.id);
+                    if (index !== -1) {
+                        conLocais.splice(index);
+                        atualizarListas();
+                        removerConExterna(item.id, "locais");
+                        atualizarPersonagem(true);
+                    }
+                    break;
+            }
+            console.log("Botão de remover clicado!");
+        });
+
+        // Adicionar os botões como filhos do contêiner
+        buttonsContainer.appendChild(buttonView);
+        buttonsContainer.appendChild(buttonRemove);
+
+        // Adicionar o contêiner como filho do elemento li
+        listItem.appendChild(buttonsContainer);
 
         // Adiciona "elementoLista" para o HTML
         listaHTML.appendChild(listItem);
@@ -330,6 +411,18 @@ function botaoExcluir() {
 //////
 //  UTILIDADES
 //////
+function receberConexoes(tipo, listaIds) {
+    return fetch(databaseLink + "/" + tipo + "?id_historia=" + idHistoria)
+        .then(response => response.json())
+        .then(data => {
+            const dataFiltrada = data.filter(elemento => {
+                return listaIds.includes(elemento.id);
+            })
+
+            return dataFiltrada;
+        })
+}
+
 function alterarBotaoSalvar(id) {
     if (idPersonagem != 0) {
         document.getElementById(id).textContent = "Atualizar"
@@ -357,6 +450,72 @@ function encontrarPorNome(nome) {
             throw error;
         });
 }
+function enviarConExterna(search, json) {
+    fetch(search, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(json)
+    })
+        // Testa por erros
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Erro na solicitação PUT externa");
+            }
+        })
+        // Se não houver erro, executa o seguinte
+        .then(data => {
+            console.log(`${json.nome} (externo) atualizado com sucesso!`);
+        })
+        // Se houver erro, executa o seguinte
+        .catch(error => {
+            console.log(`Erro ao atualizar conexao externa em ${json.nome}!`);
+            console.error("Erro na solicitação PUT externa: ", error);
+        })
+}
+
+function adicionarConExterna(idExterno, tipoExterno) {
+    var search = `${databaseLink}/${tipoExterno}/${idExterno}`
+    fetch(search)
+        .then(response => response.json())
+        .then(data => {
+            novoValor = data.con_personagens;
+            novoValor.push(parseInt(idPersonagem));
+            novoJSON = editarJSON(data, "con_personagens", novoValor);
+
+            // SOLICITAÇAO PUT EXTERNA
+            enviarConExterna(search, novoJSON);
+        })
+}
+
+function removerConExterna(idExterno, tipoExterno) {
+    var search = `${databaseLink}/${tipoExterno}/${idExterno}`
+    fetch(search)
+        .then(response => response.json())
+        .then(data => {
+            novoValor = data.con_personagens;
+            index = novoValor.indexOf(idPersonagem);
+            if (index != -1) {
+                novoValor.splice(index);
+            }
+            novoJSON = editarJSON(data, "con_personagens", novoValor);
+
+            // SOLICITAÇAO PUT EXTERNA
+            enviarConExterna(search, novoJSON);
+        })
+}
+
+function editarJSON(json, chave, valor) {
+
+    if (json.hasOwnProperty(chave)) {
+        json[chave] = valor;
+    } else {
+        throw new Error(`A chave '${chave}' não existe no JSON.`);
+    }
+
+    return json;
+}
 
 function construirJSON() {
     let inputNome = document.getElementById("inputNome").value;
@@ -370,6 +529,9 @@ function construirJSON() {
         raca: inputRaca,
         papel: inputPapel,
         descricao: inputDescricao,
+        con_eventos: conEventos,
+        con_locais: conLocais,
+        con_personagens: conPersonagens,
         imagem: "https://source.unsplash.com/random/200x200?sig=1"
     };
 
@@ -397,14 +559,14 @@ document.getElementById("excluirPersonagem").addEventListener("click", function 
     botaoExcluir();
 })
 
-document.getElementById("novoPersonagem").addEventListener("click", function() {
+document.getElementById("novoPersonagem").addEventListener("click", function () {
     atualizarModal("personagens");
 })
 
-document.getElementById("novoLocal").addEventListener("click", function() {
+document.getElementById("novoLocal").addEventListener("click", function () {
     atualizarModal("locais");
 })
 
-document.getElementById("novoEvento").addEventListener("click", function() {
+document.getElementById("novoEvento").addEventListener("click", function () {
     atualizarModal("eventos");
 })

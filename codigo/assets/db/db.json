@@ -1,59 +1,111 @@
 {
     "usuarios": [
         {
-            "id": 1,
-            "nome": "usuario_1",
-            "senha": "senhaInsegura"
+            "nome": "Usuario1",
+            "senha": "senhaNaoSegura",
+            "id": 1
+        },
+        {
+            "id": 2,
+            "nome": "usuario_2",
+            "senha": "nenhumaSenha"
         }
     ],
     "historias": [
         {
             "id": 1,
             "id_usuario": 1,
-            "nome": "Avaloria",
+            "nome": "Diante de Avaloria",
             "imagem": "https://w0.peakpx.com/wallpaper/47/289/HD-wallpaper-fantasy-forest-fantasy-dark-magic-beautiful-enchanted-night-forest-spring.jpg",
             "genero": "aventura",
             "sinopse": "Há muito tempo atrás, no reino de Avaloria..."
+        },
+        {
+            "id_usuario": "1",
+            "nome": "Um Novo Conto",
+            "genero": "ação, aventura",
+            "sinopse": "Uma história sobre um futuro incompreensível...",
+            "imagem": "https://source.unsplash.com/random/200x200?sig=1",
+            "id": 2
+        },
+        {
+            "id_usuario": "1",
+            "nome": "As Tranças do Rei Careca",
+            "genero": "comédia",
+            "sinopse": "Uma heroica busca pelas lendárias Tranças do Rei Careca",
+            "imagem": "https://source.unsplash.com/random/200x200?sig=1",
+            "id": 3
+        },
+        {
+            "id_usuario": "1",
+            "nome": "As Tranças do Rei Careca",
+            "genero": "Aventura, Comédia",
+            "sinopse": "Uma aventura em procura pelas lendárias \"Tranças do Rei Careca\"",
+            "imagem": "https://source.unsplash.com/random/200x200?sig=1",
+            "id": 4
         }
     ],
     "eventos": [
         {
-            "id": 1,
-            "id_historia": 1,
+            "id_historia": "1",
             "nome": "Morte do Rei",
-            "imagem": "https://source.unsplash.com/random/200x200?sig=1",
-            "data_inicio": "10/05/300",
+            "data_inicio": "10/10/300",
             "data_fim": "",
-            "descricao": "A morte do rei após a primeira guerra"
+            "descricao": "Morte do Rei durante a guerra",
+            "imagem": "https://source.unsplash.com/random/200x200?sig=1",
+            "con_eventos": [ ],
+            "con_locais": [ ],
+            "con_personagens": [ 2 ],
+            "id": 2
+        },
+        {
+            "id_historia": "3",
+            "nome": "A Guerra de Carlos VI, o Rei Careca",
+            "data_inicio": "105",
+            "data_fim": "120",
+            "descricao": "Uma guerra sangrenta, onde o Rei Careca saiu vitorioso",
+            "imagem": "https://source.unsplash.com/random/200x200?sig=1",
+            "id": 3
         }
     ],
     "locais": [
         {
-            "id": 1,
-            "id_historia": 1,
+            "id_historia": "1",
             "nome": "Reino de Avaloria",
+            "arquitetura": "Castelos grandes, muralhas ao redor",
+            "geografia": "Planície, belas vistas",
+            "historia": "O lendário reino de Avaloria",
             "imagem": "https://source.unsplash.com/random/200x200?sig=1",
-            "arquitetura": "Casas grandes, quadradas, telhados afiados, casas coloridas",
-            "geografia": "Montanhoso",
-            "historia": "Um reino com uma história prolongada"
+            "id": 1
+        },
+        {
+            "id_historia": "3",
+            "nome": "A Planície da Calvicie",
+            "arquitetura": "Nenhuma",
+            "geografia": "Planície",
+            "historia": "Local onde ocorreu a lendária guerra",
+            "imagem": "https://source.unsplash.com/random/200x200?sig=1",
+            "id": 2
         }
     ],
     "personagens": [
         {
-            "id": 1,
-            "id_historia": 1,
+            "id_historia": "1",
             "nome": "Cayn",
-            "imagem": "https://source.unsplash.com/random/200x200?sig=1",
             "raca": "Humano",
-            "nascimento": "15/04/320",
-            "papel": "Protagonista"
-        }
-    ],
-    "conexões": [
+            "papel": "Antagonista",
+            "descricao": "",
+            "imagem": "https://source.unsplash.com/random/200x200?sig=1",
+            "id": 1
+        },
         {
-            "id": 1,
-            "elemento_1": "pe_1",
-            "elemento_2": "lo_1"
+            "id_historia": "3",
+            "nome": "Carlos VI, o Rei Careca",
+            "raca": "Humano",
+            "papel": "Figurante",
+            "descricao": "Um rei lendário, que agora não se passa de uma história deixada no passado",
+            "imagem": "https://source.unsplash.com/random/200x200?sig=1",
+            "id": 2
         }
     ]
 }
