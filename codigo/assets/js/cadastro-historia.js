@@ -1,11 +1,11 @@
-const databaseLink = "https://jsonserver-isaque-final.isaquedias1.repl.co";
+const databaseLink = "https://organizarideiasjsonserver.isaquedias1.repl.co";
 const linkInicial = "../";
 var idUsuario = 0;
 var idHistoria = 0;
 
 //////
 // ADMINISTRA USUARIO E HISTORIA
-/////
+//////
 function alterarIdHistoria(novoId) {
     if (novoId <= 0) {
         return;
@@ -34,7 +34,7 @@ function alterarIdUsuario() {
 }
 
 function usuarioNull() {
-    alert("Nenhum usuário foi encontrado. Você será mandado para a página principal.");
+    alert("Nenhum usuário foi encontrado. Favor logar ou re-entrar na história a partir da página principal.");
 }
 
 function usuarioSemAcesso() {
