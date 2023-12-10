@@ -331,6 +331,5 @@ const json = [
   }
   
   onload = function () {gerar() }
-  onload = function () { alert("Está carregado!") }
   
   document.getElementById("botaoGerar").addEventListener("click", function () {gerar();})
