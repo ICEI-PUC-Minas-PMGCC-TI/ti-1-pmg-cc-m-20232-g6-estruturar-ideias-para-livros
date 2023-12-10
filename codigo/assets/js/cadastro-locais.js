@@ -391,6 +391,20 @@ function htmlLista(idElemento, lista, tipo) {
 //////
 //  BOTÕES
 //////
+function validarBotoes() {
+    if (!parametro("local") > 0 && !parseInt(parametro("local")) > 0) {
+        document.getElementById("botaoGrafos").disabled = true;
+    } else if (parametro("nobuttons") == 1) {
+        document.getElementById("botaoGrafos").remove();
+    } else {
+        let linkGrafos = linkInicial + "visualizacao-grafos/visualizacao-grafos.html?historia=" + parametro("historia") + "&usuario=" + parametro("usuario") + "&local=" + parametro("local");
+        const botaoGrafos = document.getElementById("botaoGrafos");
+        botaoGrafos.addEventListener("click", function () {
+            window.location.href = linkGrafos;
+        })
+    }
+}
+
 function botaoSalvar() {
     if (idLocal == 0) {
         console.log("Tentando salvar local...")
@@ -549,6 +563,7 @@ document.addEventListener("DOMContentLoaded", function () {
     alterarIdHistoria(parametro("historia"));
     alterarIdLocal(parametro("local"));
     alterarBotaoSalvar("salvarLocal");
+    validarBotoes();
     carregarLocal(parseInt(idLocal));
 })
 

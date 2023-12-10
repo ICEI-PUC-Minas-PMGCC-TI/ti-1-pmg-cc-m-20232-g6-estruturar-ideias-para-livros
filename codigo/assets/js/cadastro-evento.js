@@ -389,6 +389,28 @@ function htmlLista(idElemento, lista, tipo) {
 //////
 //  BOTÕES
 //////
+function validarBotoes() {
+    if (!parametro("evento") > 0 && !parseInt(parametro("evento")) > 0) {
+        document.getElementById("botaoGrafos").disabled = true;
+        document.getElementById("botaoTimeline").disabled = true;
+    } else if (parametro("nobuttons") == 1) {
+        document.getElementById("botaoGrafos").remove();
+        document.getElementById("botaoTimeline").remove();
+    } else {
+        let linkGrafos = linkInicial + "visualizacao-grafos/visualizacao-grafos.html?historia=" + parametro("historia") + "&usuario=" + parametro("usuario") + "&evento=" + parametro("evento");
+        const botaoGrafos = document.getElementById("botaoGrafos");
+        botaoGrafos.addEventListener("click", function () {
+            window.location.href = linkGrafos;
+        })
+
+        let linkTimeline = linkInicial + "timeline/timeline.html?historia=" + parametro("historia") + "&usuario=" + parametro("usuario") + "&evento=" + parametro("evento");
+        const botaoTimeline = document.getElementById("botaoTimeline");
+        botaoTimeline.addEventListener("click", function () {
+            window.location.href = linkTimeline;
+        })
+    }
+}
+
 function botaoSalvar() {
     if (idEvento == 0) {
         console.log("Tentando salvar evento...")
@@ -547,6 +569,7 @@ document.addEventListener("DOMContentLoaded", function () {
     alterarIdHistoria(parametro("historia"));
     alterarIdEvento(parametro("evento"));
     alterarBotaoSalvar("salvarEvento");
+    validarBotoes();
     carregarEvento(parseInt(idEvento));
 })
 
