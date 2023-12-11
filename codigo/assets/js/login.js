@@ -1,6 +1,10 @@
 const databaseLink = "https://organizarideiasjsonserver.isaquedias1.repl.co/usuarios";
 const linkInicial = "../";
 
+function paginaRegistrar() {
+    window.location.href = linkInicial + "cadastro-usuario/cadastro-usuario.html"
+}
+
 function entrarUsuario() {
     console.log("Botão 'Salvar' clicado.");
     let jsonConstruido = construirJSON();
