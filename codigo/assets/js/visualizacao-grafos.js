@@ -8,6 +8,13 @@ function parametro(nome) {
     return urlParams.get(nome);
 }
 
+function voltarParaInicio() {
+    let search = linkInicial + "cadastro-historia/cadastro-historia.html?";
+    search += "historia=" + parametro("historia");
+    search += "&usuario=" + parametro("usuario");
+    window.location.href = search;
+}
+
 function getCon(tipo) {
     var conTotal;
     var conLocais;
@@ -150,7 +157,7 @@ function carregarPagina(tipo, id) {
     search = search + "?" + tipo + "=" + id;
     search = search + "&historia=" + parametro("historia")
     search = search + "&usuario=" + parametro("usuario")
-    search = search + "&noheader"
+    search = search + "&noheader&nobuttons=1"
     console.log(search);
     iframe.src = search;
 }
@@ -166,6 +173,8 @@ function atualizar() {
 
 window.addEventListener('resize', atualizar);
 document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("botaoVoltar").addEventListener("click", voltarParaInicio)
+    
     if (parametro("local") != null) {
         atualizarFoco("locais", parametro("local"))
     } else if (parametro("personagem") != null) {

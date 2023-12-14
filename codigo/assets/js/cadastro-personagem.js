@@ -389,6 +389,20 @@ function htmlLista(idElemento, lista, tipo) {
 //////
 //  BOTÕES
 //////
+function validarBotoes() {
+    if (!parametro("personagem") > 0 && !parseInt(parametro("personagem")) > 0) {
+        document.getElementById("botaoGrafos").disabled = true;
+    } else if (parametro("nobuttons") == 1) {
+        document.getElementById("botaoGrafos").remove();
+    } else {
+        let linkGrafos = linkInicial + "visualizacao-grafos/visualizacao-grafos.html?historia=" + parametro("historia") + "&usuario=" + parametro("usuario") + "&personagem=" + parametro("personagem");
+        const botaoGrafos = document.getElementById("botaoGrafos");
+        botaoGrafos.addEventListener("click", function () {
+            window.location.href = linkGrafos;
+        })
+    }
+}
+
 function botaoSalvar() {
     if (idPersonagem == 0) {
         console.log("Tentando salvar personagem...")
@@ -546,6 +560,7 @@ document.addEventListener("DOMContentLoaded", function () {
     alterarIdHistoria(parametro("historia"));
     alterarIdPersonagem(parametro("personagem"));
     alterarBotaoSalvar("botaoSalvar");
+    validarBotoes();
     carregarPersonagem(parseInt(idPersonagem));
 })
 

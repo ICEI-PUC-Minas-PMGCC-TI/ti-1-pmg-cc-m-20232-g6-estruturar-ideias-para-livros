@@ -30,8 +30,8 @@
                     <img src="../../assets/images/logo-dark.png" height="40" class="text-dark rounded">
                     <div id="button">
                         <ul>
-                            <li><a href="" class="btn btn-outline-success popup-link">Home</a></li>
-                            <li><a href="../../pages/sobre.html/sobre.html" class="btn btn-outline-success popup-link">Sobre Nós</a></li>
+                            <li><a class="btn btn-outline-success popup-link" id="home">Home</a></li>
+                            <li><a class="btn btn-outline-success popup-link" id="sobreNos">Sobre Nós</a></li>
                             <li><a id="login" href="" class="btn btn-outline-success">Login</a></li>
                             <li><a id="logout" href="" class="btn btn-outline-success">Logout</a></li>
                         </ul>
@@ -117,7 +117,10 @@
         <!--Fim do Container Superior (área de "gerais" dos locais)-->
     <!--Conexões-->
     <div class="container rounded rounded-3 bg-light bg-gradient py-1 mt-2 shadow">
-        <h3 class="bg-secondary bg-gradient rounded rounded-3 p-1 mt-1">Conexões</h3>
+        <h3 class="bg-secondary bg-gradient rounded rounded-3 p-1 mt-1 d-flex justify-content-between align-items-center">
+            Conexões
+            <button class="btn btn-warning bg-gradient ms-auto" id="botaoGrafos">Ver em Grafos</button>
+        </h3>
         <div class="row mt-1">
             <div class="col-sm-4 py-1 border-end">
                 <p class="bg-secondary bg-gradient rounded rounded-3 p-1 text-center"><b>Eventos</b></p>
