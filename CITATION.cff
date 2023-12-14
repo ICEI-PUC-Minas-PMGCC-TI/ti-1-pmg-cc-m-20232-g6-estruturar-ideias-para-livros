@@ -1,65 +1,71 @@
 <<<<<<< HEAD
 cff-version: 1.0.1
 message: Please cite this software using these metadata.
-title: 
+title: StoryArc
 authors:
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names:
+  - family-names: de Lima Santos
+    given-names: Arthur Henrique
+  - family-names: Lopes Xavier
+    given-names: Carlos Augusto
+  - family-names: Dias Noronha
+    given-names: Isaque
+  - family-names: Alves da Silva
+    given-names: Luiz Felipe
   - name-suffix: Professor
     affiliation: PUC Minas
-    family-names: 
-    given-names: 
+    family-names: Saldanha Rivero
+    given-names: Ilo Amy
   - name-suffix: Professor
     affiliation: PUC Minas
-    family-names: 
-    given-names: 
+    family-names: Oliveira Caetano
+    given-names: João Carlos
+  - name-suffix: Professor
+    affiliation: PUC Minas
+    family-names: Vieira Carneiro
+    given-names: Rommel
 keywords:
-  - 
-  - 
-repository-code: 
+  - História
+  - RPG
+  - Escrita
+  - Livros
+  - Organização
+repository-code: https://github.com/ICEI-PUC-Minas-PMGCC-TI/ti-1-pmg-cc-m-20232-g6-estruturar-ideias-para-livros
 license: CC-BY-4.0
 version: 1.0.0
-date-released: 2022-07-14
+date-released: 2023-12-14
 =======
 cff-version: 1.0.1
 message: Please cite this software using these metadata.
-title: 
+title: StoryArc
 authors:
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names:
+  - family-names: de Lima Santos
+    given-names: Arthur Henrique
+  - family-names: Lopes Xavier
+    given-names: Carlos Augusto
+  - family-names: Dias Noronha
+    given-names: Isaque
+  - family-names: Alves da Silva
+    given-names: Luiz Felipe
   - name-suffix: Professor
     affiliation: PUC Minas
-    family-names: 
-    given-names: 
+    family-names: Saldanha Rivero
+    given-names: Ilo Amy
   - name-suffix: Professor
     affiliation: PUC Minas
-    family-names: 
-    given-names: 
+    family-names: Oliveira Caetano
+    given-names: João Carlos
+  - name-suffix: Professor
+    affiliation: PUC Minas
+    family-names: Vieira Carneiro
+    given-names: Rommel
 keywords:
-  - 
-  - 
-repository-code: 
+  - História
+  - RPG
+  - Escrita
+  - Livros
+  - Organização
+repository-code: https://github.com/ICEI-PUC-Minas-PMGCC-TI/ti-1-pmg-cc-m-20232-g6-estruturar-ideias-para-livros
 license: CC-BY-4.0
 version: 1.0.0
-date-released: 2022-07-14
+date-released: 2022-12-14
 >>>>>>> 576e4073eb686b7caee5801aac8f95491eb4d605
